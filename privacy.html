@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Korekt</title>
+  <meta name="description" content="Privacy Policy for Korekt - AI-powered code review platform">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #050508;
+      --bg-base: #0a0a0f;
+      --bg-surface: #12121a;
+      --bg-elevated: #1a1a24;
+      --bg-hover: #22222e;
+      --green-500: #22c55e;
+      --green-400: #4ade80;
+      --green-600: #16a34a;
+      --green-glow: rgba(34, 197, 94, 0.15);
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 255, 255, 0.1);
+      --font-display: 'JetBrains Mono', monospace;
+      --font-body: 'Outfit', sans-serif;
+      --container-max: 800px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(59, 130, 246, 0.05), transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: var(--green-400);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--green-500), var(--green-600));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    /* Content */
+    .content {
+      padding: 8rem 0 4rem;
+    }
+
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .policy-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .policy-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .policy-section ul {
+      color: var(--text-secondary);
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-section strong {
+      color: var(--text-primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">kk</div>
+        <span>korekt</span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: November 28, 2025</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Introduction</h2>
+        <p>Korekt, Inc., a Delaware corporation ("Korekt," "we," "us," or "our"), is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered code review platform.</p>
+        <p>By using Korekt, you agree to the collection and use of information in accordance with this policy.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Information We Collect</h2>
+        <p><strong>Account Information</strong></p>
+        <ul>
+          <li>Email address</li>
+          <li>Name</li>
+          <li>Password (stored as a secure hash, never in plain text)</li>
+          <li>Organization membership</li>
+        </ul>
+
+        <p><strong>Code and Repository Data</strong></p>
+        <ul>
+          <li>Source code diffs and file contents submitted for review</li>
+          <li>Commit messages and branch names</li>
+          <li>Repository URLs</li>
+          <li>Author information (names, email addresses) from commits</li>
+        </ul>
+
+        <p><strong>Analysis Data</strong></p>
+        <ul>
+          <li>AI-generated code review results (issues, praises, severity ratings)</li>
+          <li>Token usage and cost metrics</li>
+          <li>Analysis timestamps and processing times</li>
+        </ul>
+
+        <p><strong>Integration Credentials</strong></p>
+        <ul>
+          <li>Version control system tokens (GitHub, Bitbucket, Azure DevOps)</li>
+          <li>Issue tracking credentials (JIRA, Azure Boards)</li>
+          <li>These credentials are encrypted using AES-256 encryption</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Provide, maintain, and improve our code review services</li>
+          <li>Process and analyze your code submissions</li>
+          <li>Generate team analytics and contributor metrics</li>
+          <li>Track usage for billing and resource management</li>
+          <li>Communicate with you about your account and service updates</li>
+          <li>Ensure the security and integrity of our platform</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. AI Processing</h2>
+        <p><strong>We do not use your code to train AI models.</strong></p>
+        <p>Your code is processed by Google's Gemini AI solely to generate code review feedback. This processing is done on a per-request basis, and your code is not retained by Google for model training purposes.</p>
+        <p>We have configured our AI integration with settings that prioritize your data privacy and prevent the use of your submissions for model improvement.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Third-Party Services</h2>
+        <p>We use the following third-party services to provide our platform:</p>
+        <ul>
+          <li><strong>Google Cloud Platform (Gemini AI)</strong> - For AI-powered code analysis. Code is sent to Google's API for processing but is not used for training.</li>
+          <li><strong>Version Control Providers</strong> - We connect to GitHub, Bitbucket, and Azure DevOps using credentials you provide to access your repositories (read-only).</li>
+          <li><strong>Issue Tracking Systems</strong> - We connect to JIRA and Azure Boards to read ticket information and post analysis results as comments.</li>
+        </ul>
+        <p>We do not use third-party analytics, advertising, or tracking services on our platform.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Data Storage and Security</h2>
+        <p><strong>Location:</strong> Your data is stored on Google Cloud Platform servers located in the United States (us-central1 region).</p>
+        <p><strong>Security Measures:</strong></p>
+        <ul>
+          <li>All credentials are encrypted using AES-256 encryption</li>
+          <li>Passwords are hashed using bcrypt with appropriate work factors</li>
+          <li>Data is transmitted over encrypted connections (HTTPS/TLS)</li>
+          <li>Access to data is restricted on an organization basis</li>
+          <li>Sensitive information (API keys, tokens) is filtered from logs</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>7. Data Retention</h2>
+        <p>We retain your data, including analysis logs and code review history, indefinitely to provide you with historical insights and analytics.</p>
+        <p>You may request deletion of your data at any time by contacting us at <a href="mailto:hello@korekt.ai">hello@korekt.ai</a>. Upon receiving a verified deletion request, we will remove your data within 30 days.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>8. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> - Request a copy of the personal data we hold about you</li>
+          <li><strong>Correction</strong> - Request correction of inaccurate personal data</li>
+          <li><strong>Deletion</strong> - Request deletion of your personal data</li>
+          <li><strong>Export</strong> - Request your data in a portable format</li>
+          <li><strong>Withdraw Consent</strong> - Withdraw consent for data processing where applicable</li>
+        </ul>
+        <p>To exercise these rights, contact us at <a href="mailto:hello@korekt.ai">hello@korekt.ai</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>9. Children's Privacy</h2>
+        <p>Korekt is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+        <p>Your continued use of Korekt after any changes indicates your acceptance of the updated policy.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>11. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us:</p>
+        <p>
+          <strong>Korekt, Inc.</strong><br>
+          Email: <a href="mailto:hello@korekt.ai">hello@korekt.ai</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2025 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
