@@ -1769,34 +1769,32 @@
 
       .features-grid-5 {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
 
-      .features-grid-5 .feature-card:nth-child(1),
-      .features-grid-5 .feature-card:nth-child(2) {
+      .features-grid-5 .feature-card {
         grid-column: span 1 !important;
-        padding: 1.75rem;
+        padding: 1.5rem;
       }
 
-      .features-grid-5 .feature-card:nth-child(1) .feature-icon,
-      .features-grid-5 .feature-card:nth-child(2) .feature-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-      }
-
-      .features-grid-5 .feature-card:nth-child(1) h3,
-      .features-grid-5 .feature-card:nth-child(2) h3 {
+      .features-grid-5 .feature-card .feature-icon {
+        width: 44px;
+        height: 44px;
         font-size: 1.25rem;
+        margin-bottom: 1rem;
       }
 
-      .features-grid-5 .feature-card:nth-child(3),
-      .features-grid-5 .feature-card:nth-child(4),
-      .features-grid-5 .feature-card:nth-child(5) {
-        grid-column: span 1 !important;
+      .features-grid-5 .feature-card h3 {
+        font-size: 1.125rem;
       }
 
+      .features-grid-5 .feature-card p {
+        font-size: 0.875rem;
+      }
+
+      /* 5th card spans full width on tablet */
       .features-grid-5 .feature-card:nth-child(5) {
-        grid-column: 1 / span 2 !important;
+        grid-column: 1 / -1 !important;
       }
 
       .dashboard-content {
@@ -1854,7 +1852,8 @@
         grid-template-columns: 1fr;
       }
 
-      .features-grid-5 .feature-card {
+      .features-grid-5 .feature-card,
+      .features-grid-5 .feature-card:nth-child(5) {
         grid-column: span 1 !important;
       }
 
@@ -1983,7 +1982,7 @@
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
-            <a href="#dashboard" class="btn btn-secondary">See the Dashboard</a>
+            <a href="#features" class="btn btn-secondary">See Features</a>
           </div>
         </div>
 
@@ -2068,7 +2067,7 @@
   </section>
 
   <!-- Features Section -->
-  <section class="features-section">
+  <section class="features-section" id="features">
     <div class="container">
       <div class="section-header fade-in">
         <h2>Everything your team needs</h2>
