@@ -6,6 +6,10 @@
   <title>Korekt - AI Code Review That Verifies Requirements</title>
   <meta name="description" content="Every PR. Every ticket. Automatically verified. AI-powered code reviews that ensure your code matches your requirements.">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,14 +201,14 @@
     .logo-icon {
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, var(--green-500), var(--green-600));
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+    }
+
+    .logo-icon svg {
+      width: 100%;
+      height: 100%;
     }
 
     .nav-cta {
@@ -582,15 +586,14 @@
     .hero-dash-icon {
       width: 28px;
       height: 28px;
-      background: linear-gradient(135deg, var(--green-500), var(--green-600));
-      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.625rem;
-      font-weight: 700;
-      color: var(--bg-deep);
-      letter-spacing: -0.02em;
+    }
+
+    .hero-dash-icon svg {
+      width: 100%;
+      height: 100%;
     }
 
     .hero-dash-period {
@@ -1950,8 +1953,21 @@
   <nav>
     <div class="container">
       <a href="#" class="logo">
-        <div class="logo-icon">kk</div>
-        <span>korekt</span>
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span style="color: #10b981">.ai</span></span>
       </a>
       <a href="mailto:hello@korekt.ai" class="nav-cta">Get in Touch</a>
     </div>
@@ -1990,7 +2006,20 @@
           <div class="hero-dashboard">
             <div class="hero-dash-header">
               <div class="hero-dash-title">
-                <span class="hero-dash-icon">kk</span>
+                <span class="hero-dash-icon">
+                  <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="dashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#059669"/>
+                        <stop offset="100%" style="stop-color:#10b981"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </span>
                 <span>Team Analytics</span>
               </div>
               <span class="hero-dash-period">Last 30 days</span>
