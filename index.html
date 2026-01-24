@@ -1843,6 +1843,31 @@
       border-color: var(--green-500);
     }
 
+    /* Auto-advance progress indicator */
+    .prj-step-tab {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prj-step-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-500);
+    }
+
+    @keyframes prj-progress {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .auto-advancing .prj-step-tab.active::after {
+      animation: prj-progress 2.5s linear forwards;
+    }
+
     .prj-step-number {
       width: 24px;
       height: 24px;
@@ -3582,11 +3607,22 @@
         });
       }
 
+      // Auto-advance when section is visible
+      let autoAdvanceTimer = null;
+      let hasAutoAdvanced = false;
+
       // Keyboard navigation with arrow keys
       const prjSection = document.querySelector('.pr-journey-section');
       if (prjSection) {
         prjSection.addEventListener('keydown', (e) => {
           if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            // Stop auto-advance permanently on keyboard interaction
+            if (autoAdvanceTimer) {
+              clearInterval(autoAdvanceTimer);
+              autoAdvanceTimer = null;
+              prjSection.classList.remove('auto-advancing');
+              hasAutoAdvanced = true;
+            }
             const current = parseInt(panelsWrapper.dataset.active);
             if (e.key === 'ArrowLeft' && current > 1) {
               setActiveStep(current - 1);
@@ -3595,6 +3631,64 @@
             }
           }
         });
+      }
+
+      function stopAutoAdvance() {
+        if (autoAdvanceTimer) {
+          clearInterval(autoAdvanceTimer);
+          autoAdvanceTimer = null;
+        }
+        prjSection?.classList.remove('auto-advancing');
+      }
+
+      function startAutoAdvance() {
+        if (autoAdvanceTimer || hasAutoAdvanced) return;
+
+        // Continue from current step (don't reset if user scrolled away mid-sequence)
+        prjSection?.classList.add('auto-advancing');
+
+        autoAdvanceTimer = setInterval(() => {
+          const current = parseInt(panelsWrapper.dataset.active);
+          if (current < 3) {
+            setActiveStep(current + 1);
+          } else {
+            // Reached the end, stop auto-advance
+            stopAutoAdvance();
+            hasAutoAdvanced = true;
+          }
+        }, 2500); // 2.5 seconds per panel
+      }
+
+      // Stop auto-advance permanently on any manual interaction
+      function stopAutoAdvancePermanently() {
+        stopAutoAdvance();
+        hasAutoAdvanced = true; // Prevent restart after manual interaction
+      }
+
+      [...stepTabs, ...progressDots].forEach(el => {
+        el.addEventListener('click', stopAutoAdvancePermanently);
+        el.addEventListener('focusin', stopAutoAdvancePermanently); // Accessibility: stop on keyboard focus
+      });
+      [prevArrow, nextArrow].forEach(el => {
+        if (el) {
+          el.addEventListener('click', stopAutoAdvancePermanently);
+          el.addEventListener('focusin', stopAutoAdvancePermanently);
+        }
+      });
+
+      // Use Intersection Observer to trigger auto-advance
+      if (prjSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startAutoAdvance();
+            } else {
+              stopAutoAdvance();
+            }
+          });
+        }, { threshold: 0.2 }); // Lower threshold for mobile/tall sections
+
+        observer.observe(prjSection);
       }
     })();
   </script>
