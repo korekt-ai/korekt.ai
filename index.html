@@ -15,88 +15,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="styles.css">
+
   <style>
     /* ============================================
-       CSS CUSTOM PROPERTIES
+       PAGE-SPECIFIC OVERRIDES
        ============================================ */
-    :root {
-      /* Colors */
-      --bg-deep: #050508;
-      --bg-base: #0a0a0f;
-      --bg-surface: #12121a;
-      --bg-elevated: #1a1a24;
-      --bg-hover: #22222e;
-
-      --green-500: #22c55e;
-      --green-400: #4ade80;
-      --green-600: #16a34a;
-      --green-glow: rgba(34, 197, 94, 0.15);
-
-      --blue-500: #3b82f6;
-      --blue-400: #60a5fa;
-
-      --amber-500: #f59e0b;
-      --amber-400: #fbbf24;
-
-      --red-500: #ef4444;
-      --red-400: #f87171;
-
-      --text-primary: #f4f4f5;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-      --text-dim: #52525b;
-
-      --border: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(255, 255, 255, 0.1);
-
-      /* Typography */
-      --font-display: 'Inter', sans-serif;
-      --font-body: 'Outfit', sans-serif;
-
-      /* Spacing */
-      --section-padding: clamp(4rem, 10vw, 8rem);
-      --container-max: 1200px;
-
-      /* Transitions */
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* ============================================
-       RESET & BASE
-       ============================================ */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
     body {
-      font-family: var(--font-body);
-      background: var(--bg-base);
-      color: var(--text-primary);
-      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Background texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.08), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(59, 130, 246, 0.05), transparent);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* Noise overlay */
+    /* Noise overlay (index-specific) */
     body::after {
       content: '';
       position: fixed;
@@ -112,119 +42,8 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* ============================================
-       LAYOUT
-       ============================================ */
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: var(--section-padding) 0;
-    }
-
-    /* ============================================
-       TYPOGRAPHY
-       ============================================ */
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-    }
-
-    h2 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-    }
-
-    .text-gradient {
-      background: linear-gradient(135deg, var(--green-400), var(--blue-400));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .text-muted {
-      color: var(--text-secondary);
-    }
-
     .mono {
       font-family: var(--font-display);
-    }
-
-    /* ============================================
-       NAVIGATION
-       ============================================ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1rem 0;
-      background: rgba(10, 10, 15, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .nav-cta {
-      padding: 0.625rem 1.25rem;
-      background: var(--green-500);
-      color: var(--bg-deep);
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: all 0.2s var(--ease-out-expo);
-    }
-
-    .nav-cta:hover {
-      background: var(--green-400);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px var(--green-glow);
     }
 
     /* ============================================
@@ -242,7 +61,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
-      align-items: center;
+      align-items: start;
     }
 
     .hero-text {
@@ -259,7 +78,7 @@
       border-radius: 100px;
       font-size: 0.8125rem;
       color: var(--text-secondary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .hero-badge-dot {
@@ -276,7 +95,7 @@
     }
 
     .hero h1 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .hero h1 span {
@@ -286,7 +105,7 @@
     .hero-subtitle {
       font-size: 1.25rem;
       color: var(--text-secondary);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       line-height: 1.7;
     }
 
@@ -294,41 +113,6 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.875rem 1.5rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      transition: all 0.25s var(--ease-out-expo);
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--green-500);
-      color: var(--bg-deep);
-    }
-
-    .btn-primary:hover {
-      background: var(--green-400);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--green-glow);
-    }
-
-    .btn-secondary {
-      background: var(--bg-surface);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg-elevated);
-      border-color: var(--border-hover);
     }
 
     /* Hero Visual */
@@ -602,181 +386,269 @@
       font-family: var(--font-display);
     }
 
-    .hero-dash-grid {
+    /* Summary cards row */
+    .hero-summary-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      position: relative;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
     }
 
-    /* Stats row - spans all 3 columns */
-    .hero-dash-stat {
+    .hero-summary-card {
       background: var(--bg-elevated);
-      border-radius: 10px;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
+      border-radius: 8px;
+      padding: 0.75rem;
     }
 
-    .hero-dash-stat-label {
-      font-size: 0.6875rem;
+    .hero-summary-label {
+      font-size: 0.5625rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
     }
 
-    .hero-dash-stat-value {
+    .hero-summary-value {
       font-family: var(--font-display);
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1;
     }
 
-    .hero-dash-stat-change {
-      font-size: 0.75rem;
-      font-family: var(--font-display);
+    .hero-summary-trend {
+      font-size: 0.5625rem;
+      margin-top: 0.25rem;
     }
 
-    .hero-dash-stat-change.positive {
-      color: var(--green-400);
+    .hero-summary-trend.positive { color: var(--green-400); }
+    .hero-summary-trend.negative { color: var(--red-400); }
+
+    /* Two column content grid */
+    .hero-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
 
-    .hero-dash-stat-change.negative {
-      color: var(--red-400);
-    }
-
-    /* Chart section */
-    .hero-dash-chart {
-      grid-column: span 2;
+    /* Work Mix section */
+    .hero-work-mix {
       background: var(--bg-elevated);
       border-radius: 10px;
       padding: 1rem;
     }
 
-    .hero-dash-chart-header {
+    .hero-section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.75rem;
-      font-size: 0.75rem;
-      font-family: var(--font-display);
-      color: var(--text-secondary);
     }
 
-    .hero-dash-legend {
+    .hero-section-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Stacked bar */
+    .hero-stacked-bar {
       display: flex;
-      gap: 0.75rem;
-      font-size: 0.625rem;
+      height: 24px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-stacked-bar > span {
+      height: 100%;
+    }
+
+    /* Intent legend */
+    .hero-intent-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .hero-intent-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+    }
+
+    .hero-intent-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .hero-intent-label {
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .hero-intent-pct {
       color: var(--text-muted);
     }
 
-    .hero-dash-legend span {
+    .hero-intent-count {
+      color: var(--text-dim);
+      font-size: 0.5625rem;
+    }
+
+    /* Callout */
+    .hero-callout {
+      margin-top: 0.75rem;
+      padding: 0.5rem 0.625rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.625rem;
+      color: var(--green-400);
+    }
+
+    .hero-callout svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    /* Change Aspects */
+    .hero-aspects {
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .hero-aspect-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .hero-aspect-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-aspect-label {
+      width: 56px;
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+    }
+
+    .hero-aspect-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: var(--bg-surface);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .hero-aspect-bar {
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .hero-aspect-count {
+      width: 16px;
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Progress trend */
+    .hero-progress-section {
+      grid-column: span 2;
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-progress-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-progress-legend {
+      display: flex;
+      gap: 0.625rem;
+      font-size: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .hero-progress-legend span {
       display: flex;
       align-items: center;
       gap: 0.25rem;
     }
 
-    .hero-dash-legend i {
-      width: 8px;
-      height: 8px;
-      border-radius: 2px;
-      display: inline-block;
+    .hero-progress-legend i {
+      width: 6px;
+      height: 6px;
+      border-radius: 1px;
     }
 
-    .hero-dash-bars {
+    .hero-progress-chart {
       display: flex;
-      gap: 8px;
-      height: 80px;
       align-items: flex-end;
+      gap: 0.375rem;
+      height: 60px;
     }
 
-    .hero-bar {
+    .hero-progress-bar {
       flex: 1;
       display: flex;
       flex-direction: column;
       border-radius: 3px 3px 0 0;
       overflow: hidden;
-      height: 100%;
     }
 
-    .hero-bar > div {
+    .hero-progress-bar > span {
       width: 100%;
-      transition: opacity 0.2s;
     }
 
-    .seg-c { background: var(--red-400); }
-    .seg-m { background: var(--amber-400); }
-    .seg-l { background: var(--blue-400); }
-
-    .hero-bar:hover > div {
-      opacity: 0.75;
+    .hero-progress-bar.current {
+      box-shadow: 0 0 0 1px var(--green-400);
     }
 
-    /* Contributors section */
-    .hero-dash-contributors {
-      grid-column: span 1;
-      background: var(--bg-elevated);
-      border-radius: 10px;
-      padding: 1rem;
-    }
-
-    .hero-dash-contrib-header {
+    .hero-progress-labels {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.75rem;
-      font-size: 0.6875rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      margin-top: 0.375rem;
+      font-size: 0.5rem;
+      color: var(--text-dim);
     }
 
-    .hero-dash-contrib-row {
-      display: grid;
-      grid-template-columns: 20px 1fr 50px 36px;
-      gap: 0.5rem;
-      align-items: center;
-      padding: 0.375rem 0;
-      font-size: 0.75rem;
-    }
-
-    .hero-dash-contrib-row + .hero-dash-contrib-row {
-      border-top: 1px solid var(--border);
-    }
-
-    .contrib-rank {
-      color: var(--text-muted);
-      font-family: var(--font-display);
-      font-size: 0.625rem;
-    }
-
-    .contrib-name {
-      font-family: var(--font-display);
-      color: var(--text-secondary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .contrib-bar {
-      height: 4px;
-      background: var(--bg-surface);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .contrib-bar span {
-      display: block;
-      height: 100%;
-      background: linear-gradient(90deg, var(--green-500), var(--green-400));
-      border-radius: 2px;
-    }
-
-    .contrib-ratio {
-      font-family: var(--font-display);
-      font-weight: 600;
+    .hero-progress-labels span.current {
       color: var(--green-400);
-      text-align: right;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .hero-summary-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-content-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-progress-section {
+        grid-column: span 1;
+      }
     }
 
     .pr-mockup {
@@ -1678,37 +1550,6 @@
     /* ============================================
        FOOTER
        ============================================ */
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-text {
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--text-primary);
-    }
-
     /* ============================================
        SCROLL ANIMATIONS
        ============================================ */
@@ -1946,6 +1787,914 @@
         display: none;
       }
     }
+
+    /* ============================================
+       PR JOURNEY SECTION (Tabbed)
+       ============================================ */
+    .pr-journey-section {
+      padding: 6rem 0;
+    }
+
+    .pr-journey-section .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .pr-journey-section .section-header h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .pr-journey-section .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+    }
+
+    /* Step Tabs */
+    .prj-step-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .prj-step-tab {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    .prj-step-tab:hover {
+      background: var(--bg-elevated);
+    }
+
+    .prj-step-tab.active {
+      background: var(--bg-elevated);
+      border-color: var(--green-500);
+    }
+
+    .prj-step-number {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-hover);
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .prj-step-tab.active .prj-step-number {
+      background: var(--green-500);
+      color: white;
+    }
+
+    .prj-step-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .prj-step-tab.active .prj-step-label {
+      color: var(--text-primary);
+    }
+
+    .prj-step-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+
+    /* Panel Container */
+    .prj-panel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .prj-panels-wrapper {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .prj-panels-wrapper[data-active="1"] { transform: translateX(0); }
+    .prj-panels-wrapper[data-active="2"] { transform: translateX(calc(-100% - 2rem)); }
+    .prj-panels-wrapper[data-active="3"] { transform: translateX(calc(-200% - 4rem)); }
+
+    /* Main Panel */
+    .prj-panel {
+      flex: 0 0 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      margin-right: 2rem;
+    }
+
+    .prj-panel:last-child {
+      margin-right: 0;
+    }
+
+    .prj-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(255,255,255,0.03), transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Panel Header */
+    .prj-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prj-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .prj-header-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .prj-header-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .prj-header-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Content Grid */
+    .prj-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .prj-card {
+      background: var(--bg-elevated);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .prj-card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Complexity */
+    .prj-complexity-display {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .prj-complexity-circle {
+      position: relative;
+      width: 64px;
+      height: 64px;
+    }
+
+    .prj-complexity-circle svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .prj-complexity-circle .bg {
+      fill: none;
+      stroke: var(--bg-hover);
+      stroke-width: 5;
+    }
+
+    .prj-complexity-circle .fg {
+      fill: none;
+      stroke: #fb923c;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 157;
+      stroke-dashoffset: 63;
+    }
+
+    .prj-complexity-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fb923c;
+    }
+
+    .prj-complexity-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .prj-complexity-rating {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .prj-complexity-scale {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Classification */
+    .prj-intent-badge {
+      display: inline-flex;
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--blue-400);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .prj-aspects-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .prj-aspect-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .prj-aspect-tag.security { background: rgba(239, 68, 68, 0.15); color: var(--red-400); }
+    .prj-aspect-tag.tests { background: rgba(34, 197, 94, 0.15); color: var(--green-400); }
+    .prj-aspect-tag.database { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+
+    /* Issues Section */
+    .prj-issues-section {
+      background: var(--bg-elevated);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .prj-issues-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prj-issues-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .prj-issues-title svg {
+      width: 18px;
+      height: 18px;
+      color: #fb923c;
+    }
+
+    .prj-issues-count {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border-radius: 4px;
+    }
+
+    .prj-issues-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prj-issue-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prj-issue-row:last-child {
+      border-bottom: none;
+    }
+
+    .prj-severity-badge {
+      font-size: 0.625rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+
+    .prj-severity-badge.crit {
+      background: rgba(251, 113, 133, 0.2);
+      color: #fb7185;
+      border-color: rgba(251, 113, 133, 0.3);
+    }
+
+    .prj-severity-badge.high {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--amber-400);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .prj-severity-badge.med {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .prj-status-badge {
+      font-size: 0.625rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+
+    .prj-status-badge.new {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--blue-400);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .prj-status-badge.open {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--amber-400);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .prj-status-badge.fixed {
+      background: rgba(52, 211, 153, 0.2);
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .prj-issue-content {
+      flex: 1;
+    }
+
+    .prj-issue-message {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 0.375rem;
+    }
+
+    .prj-issue-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .prj-issue-category {
+      padding: 0.125rem 0.375rem;
+      background: var(--bg-surface);
+      border-radius: 3px;
+    }
+
+    /* Praises */
+    .prj-praises-preview {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-elevated);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .prj-praises-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--green-400);
+    }
+
+    .prj-praises-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .prj-praises-count {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green-400);
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    /* Iteration Navigator */
+    .prj-iteration-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .prj-nav-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elevated);
+      border: none;
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .prj-nav-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+    }
+
+    .prj-nav-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .prj-iteration-label {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .prj-iteration-label span {
+      font-weight: 600;
+    }
+
+    /* Delta Summary */
+    .prj-delta-summary {
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .prj-delta-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.625rem;
+    }
+
+    .prj-delta-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .prj-delta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .prj-delta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 0.625rem;
+      border-radius: 5px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      border: 1px solid;
+    }
+
+    .prj-delta-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .prj-delta-badge.fixed {
+      background: rgba(52, 211, 153, 0.1);
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .prj-delta-badge.criteria {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green-400);
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    /* Criteria Changes */
+    .prj-criteria-changes-inline {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .prj-criteria-change-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0;
+    }
+
+    .prj-criteria-change-row:last-child {
+      padding-bottom: 0;
+    }
+
+    .prj-criteria-arrow {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    .prj-criteria-change-text {
+      flex: 1;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-left: 0.375rem;
+    }
+
+    /* Fixed issues */
+    .prj-issue-row.fixed-issue {
+      opacity: 0.6;
+    }
+
+    .prj-issue-row.fixed-issue .prj-issue-message {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .prj-resolved-info {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.375rem;
+      font-size: 0.8125rem;
+      color: #34d399;
+    }
+
+    .prj-resolved-info svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Commit info */
+    .prj-commit-info {
+      margin-top: 1.25rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* Compliance Panel */
+    .prj-panel-header-compliance {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .prj-header-left-compliance {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .prj-header-title-compliance {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .prj-header-title-compliance svg {
+      width: 20px;
+      height: 20px;
+      color: #a78bfa;
+    }
+
+    .prj-ticket-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.375rem 0.625rem;
+      background: rgba(167, 139, 250, 0.1);
+      color: #a78bfa;
+      font-size: 0.875rem;
+      border-radius: 4px;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      text-decoration: none;
+    }
+
+    .prj-ticket-link svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Compliance Ring */
+    .prj-compliance-ring {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+
+    .prj-compliance-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .prj-compliance-ring .bg {
+      fill: none;
+      stroke: var(--bg-hover);
+      stroke-width: 4;
+    }
+
+    .prj-compliance-ring .fg {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 125.6;
+    }
+
+    .prj-compliance-ring .fg.green {
+      stroke: #34d399;
+      stroke-dashoffset: 25.12;
+    }
+
+    .prj-compliance-ring .fg.amber {
+      stroke: var(--amber-400);
+      stroke-dashoffset: 37.68;
+    }
+
+    .prj-compliance-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+
+    .prj-compliance-value.green {
+      color: #34d399;
+    }
+
+    .prj-compliance-value.amber {
+      color: var(--amber-400);
+    }
+
+    .prj-overall-summary {
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .prj-compliance-section {
+      background: var(--bg-elevated);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .prj-section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.875rem 1.25rem;
+      cursor: pointer;
+    }
+
+    .prj-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .prj-section-count {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border-radius: 4px;
+      font-family: var(--font-display);
+    }
+
+    .prj-section-chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--text-muted);
+    }
+
+    .prj-compliance-items {
+      border-top: 1px solid var(--border);
+    }
+
+    .prj-compliance-item {
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prj-compliance-item:last-child {
+      border-bottom: none;
+    }
+
+    .prj-item-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+    }
+
+    .prj-status-badge-compliance {
+      font-size: 0.625rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+
+    .prj-status-badge-compliance.met {
+      background: rgba(52, 211, 153, 0.2);
+      color: #34d399;
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .prj-status-badge-compliance.partial {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--amber-400);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+
+    .prj-status-badge-compliance.not-met {
+      background: rgba(248, 113, 113, 0.2);
+      color: var(--red-400);
+      border-color: rgba(248, 113, 113, 0.3);
+    }
+
+    .prj-item-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    /* Navigation Hint */
+    .prj-nav-hint {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .prj-nav-hint-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: inherit;
+    }
+
+    .prj-nav-hint-arrow:hover {
+      background: var(--bg-elevated);
+      border-color: var(--green-500);
+    }
+
+    .prj-nav-hint-arrow.disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .prj-nav-hint-arrow.disabled:hover {
+      background: var(--bg-surface);
+      border-color: var(--border);
+    }
+
+    .prj-nav-hint-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Progress Dots */
+    .prj-progress-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .prj-progress-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .prj-progress-dot.active {
+      background: var(--green-500);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .prj-progress-dot:hover:not(.active) {
+      background: var(--text-dim);
+    }
+
+    /* PR Journey Responsive */
+    @media (max-width: 768px) {
+      .prj-step-tabs {
+        gap: 0.25rem;
+      }
+
+      .prj-step-tab {
+        padding: 0.5rem 0.75rem;
+      }
+
+      .prj-step-label {
+        display: none;
+      }
+
+      .prj-step-arrow {
+        font-size: 0.75rem;
+      }
+
+      .prj-panel {
+        padding: 1.5rem;
+      }
+
+      .prj-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1967,7 +2716,7 @@
             <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
           </svg>
         </div>
-        <span>korekt<span style="color: #10b981">.ai</span></span>
+        <span>korekt<span class="text-green">.ai</span></span>
       </a>
       <a href="mailto:hello@korekt.ai" class="nav-cta">Get in Touch</a>
     </div>
@@ -2020,72 +2769,200 @@
                     <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
                   </svg>
                 </span>
-                <span>Team Analytics</span>
+                <span>Sprint Insights</span>
               </div>
-              <span class="hero-dash-period">Last 30 days</span>
+              <span class="hero-dash-period">Sprint 24</span>
             </div>
 
-            <div class="hero-dash-grid">
-              <!-- Top stats row -->
-              <div class="hero-dash-stat">
-                <span class="hero-dash-stat-label">Total Reviews</span>
-                <span class="hero-dash-stat-value">226</span>
-                <span class="hero-dash-stat-change positive">&uarr; 18%</span>
+            <!-- Summary cards -->
+            <div class="hero-summary-row">
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">PRs Merged</div>
+                <div class="hero-summary-value" style="color: var(--green-400)">47</div>
+                <div class="hero-summary-trend positive">+15% vs S23</div>
               </div>
-              <div class="hero-dash-stat">
-                <span class="hero-dash-stat-label">Issues Found</span>
-                <span class="hero-dash-stat-value">308</span>
-                <span class="hero-dash-stat-change negative">&darr; 12%</span>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Merge Time</div>
+                <div class="hero-summary-value">18h</div>
+                <div class="hero-summary-trend positive">12% faster</div>
               </div>
-              <div class="hero-dash-stat">
-                <span class="hero-dash-stat-label">Team P/I Ratio</span>
-                <span class="hero-dash-stat-value" style="color: var(--green-400);">3.8</span>
-                <span class="hero-dash-stat-change positive">&uarr; 0.4</span>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Stale PRs</div>
+                <div class="hero-summary-value" style="color: var(--red-400)">3</div>
+                <div class="hero-summary-trend" style="color: var(--text-muted)">> 7 days open</div>
               </div>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Active</div>
+                <div class="hero-summary-value">8<span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400">/12</span></div>
+                <div class="hero-summary-trend" style="color: var(--text-muted)">contributors</div>
+              </div>
+            </div>
 
-              <!-- Chart -->
-              <div class="hero-dash-chart">
-                <div class="hero-dash-chart-header">
-                  <span>Issue Trend</span>
-                  <div class="hero-dash-legend">
-                    <span><i style="background: var(--red-400);"></i>Critical</span>
-                    <span><i style="background: var(--amber-400);"></i>Medium</span>
-                    <span><i style="background: var(--blue-400);"></i>Low</span>
+            <div class="hero-content-grid">
+              <!-- Work Mix -->
+              <div class="hero-work-mix">
+                <div class="hero-section-header">
+                  <span class="hero-section-title">Work Mix</span>
+                </div>
+                <div class="hero-stacked-bar">
+                  <span style="width: 42%; background: var(--blue-500)"></span>
+                  <span style="width: 28%; background: var(--red-500)"></span>
+                  <span style="width: 18%; background: var(--green-500)"></span>
+                  <span style="width: 8%; background: var(--yellow-500)"></span>
+                  <span style="width: 4%; background: #a78bfa"></span>
+                </div>
+                <div class="hero-intent-legend">
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--blue-500)"></span>
+                    <span class="hero-intent-label">Feature</span>
+                    <span class="hero-intent-pct">42%</span>
+                    <span class="hero-intent-count">(20)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--red-500)"></span>
+                    <span class="hero-intent-label">Fix</span>
+                    <span class="hero-intent-pct">28%</span>
+                    <span class="hero-intent-count">(13)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--green-500)"></span>
+                    <span class="hero-intent-label">Improve</span>
+                    <span class="hero-intent-pct">18%</span>
+                    <span class="hero-intent-count">(8)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--yellow-500)"></span>
+                    <span class="hero-intent-label">Maintain</span>
+                    <span class="hero-intent-pct">8%</span>
+                    <span class="hero-intent-count">(4)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: #a78bfa"></span>
+                    <span class="hero-intent-label">Operate</span>
+                    <span class="hero-intent-pct">4%</span>
+                    <span class="hero-intent-count">(2)</span>
                   </div>
                 </div>
-                <div class="hero-dash-bars">
-                  <div class="hero-bar"><div class="seg-c" style="height:8%"></div><div class="seg-m" style="height:22%"></div><div class="seg-l" style="height:70%"></div></div>
-                  <div class="hero-bar"><div class="seg-c" style="height:5%"></div><div class="seg-m" style="height:28%"></div><div class="seg-l" style="height:67%"></div></div>
-                  <div class="hero-bar"><div class="seg-c" style="height:12%"></div><div class="seg-m" style="height:33%"></div><div class="seg-l" style="height:55%"></div></div>
-                  <div class="hero-bar"><div class="seg-c" style="height:4%"></div><div class="seg-m" style="height:18%"></div><div class="seg-l" style="height:78%"></div></div>
-                  <div class="hero-bar"><div class="seg-c" style="height:6%"></div><div class="seg-m" style="height:24%"></div><div class="seg-l" style="height:70%"></div></div>
-                  <div class="hero-bar"><div class="seg-c" style="height:3%"></div><div class="seg-m" style="height:15%"></div><div class="seg-l" style="height:82%"></div></div>
+                <div class="hero-callout">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                  Feature work up 8% vs previous sprint
                 </div>
               </div>
 
-              <!-- Contributors -->
-              <div class="hero-dash-contributors">
-                <div class="hero-dash-contrib-header">
-                  <span>Top Contributors</span>
-                  <span>P/I Ratio</span>
+              <!-- Change Aspects -->
+              <div class="hero-aspects">
+                <div class="hero-section-header">
+                  <span class="hero-section-title">Change Aspects</span>
                 </div>
-                <div class="hero-dash-contrib-row">
-                  <span class="contrib-rank">1</span>
-                  <span class="contrib-name">vladan.djokic</span>
-                  <span class="contrib-bar"><span style="width: 97%;"></span></span>
-                  <span class="contrib-ratio">4.85</span>
+                <div class="hero-aspect-bars">
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Security</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 15%; background: var(--red-400)"></div></div>
+                    <span class="hero-aspect-count">3</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Tests</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 85%; background: var(--green-400)"></div></div>
+                    <span class="hero-aspect-count">17</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Docs</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 40%; background: var(--blue-400)"></div></div>
+                    <span class="hero-aspect-count">8</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Deps</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 25%; background: #a78bfa"></div></div>
+                    <span class="hero-aspect-count">5</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Breaking</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 10%; background: var(--orange-500)"></div></div>
+                    <span class="hero-aspect-count">2</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Database</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 20%; background: #f472b6"></div></div>
+                    <span class="hero-aspect-count">4</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Perf</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 30%; background: var(--yellow-500)"></div></div>
+                    <span class="hero-aspect-count">6</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">CI/CD</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 35%; background: var(--text-muted)"></div></div>
+                    <span class="hero-aspect-count">7</span>
+                  </div>
                 </div>
-                <div class="hero-dash-contrib-row">
-                  <span class="contrib-rank">2</span>
-                  <span class="contrib-name">sarah.miller</span>
-                  <span class="contrib-bar"><span style="width: 70%;"></span></span>
-                  <span class="contrib-ratio">3.42</span>
+              </div>
+
+              <!-- Progress Trend -->
+              <div class="hero-progress-section">
+                <div class="hero-progress-header">
+                  <span class="hero-progress-title">Progress Trend</span>
+                  <div class="hero-progress-legend">
+                    <span><i style="background: var(--blue-500)"></i>Feature</span>
+                    <span><i style="background: var(--red-500)"></i>Fix</span>
+                    <span><i style="background: var(--green-500)"></i>Improve</span>
+                    <span><i style="background: var(--yellow-500)"></i>Maintain</span>
+                    <span><i style="background: #a78bfa"></i>Operate</span>
+                  </div>
                 </div>
-                <div class="hero-dash-contrib-row">
-                  <span class="contrib-rank">3</span>
-                  <span class="contrib-name">mike.chen</span>
-                  <span class="contrib-bar"><span style="width: 45%;"></span></span>
-                  <span class="contrib-ratio">2.18</span>
+                <div class="hero-progress-chart">
+                  <div class="hero-progress-bar" style="height: 100%;">
+                    <span style="height: 35%; background: var(--blue-500)"></span>
+                    <span style="height: 30%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 10%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 85%;">
+                    <span style="height: 40%; background: var(--blue-500)"></span>
+                    <span style="height: 25%; background: var(--red-500)"></span>
+                    <span style="height: 18%; background: var(--green-500)"></span>
+                    <span style="height: 12%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 70%;">
+                    <span style="height: 30%; background: var(--blue-500)"></span>
+                    <span style="height: 35%; background: var(--red-500)"></span>
+                    <span style="height: 22%; background: var(--green-500)"></span>
+                    <span style="height: 8%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 90%;">
+                    <span style="height: 38%; background: var(--blue-500)"></span>
+                    <span style="height: 28%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 9%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 75%;">
+                    <span style="height: 32%; background: var(--blue-500)"></span>
+                    <span style="height: 32%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 11%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar current" style="height: 95%;">
+                    <span style="height: 42%; background: var(--blue-500)"></span>
+                    <span style="height: 28%; background: var(--red-500)"></span>
+                    <span style="height: 18%; background: var(--green-500)"></span>
+                    <span style="height: 8%; background: var(--yellow-500)"></span>
+                    <span style="height: 4%; background: #a78bfa"></span>
+                  </div>
+                </div>
+                <div class="hero-progress-labels">
+                  <span>S19</span>
+                  <span>S20</span>
+                  <span>S21</span>
+                  <span>S22</span>
+                  <span>S23</span>
+                  <span class="current">S24</span>
                 </div>
               </div>
             </div>
@@ -2095,8 +2972,391 @@
     </div>
   </section>
 
+  <!-- PR Journey Section -->
+  <section class="pr-journey-section" id="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>What happens to your PR</h2>
+        <p>Every code review analyzed, tracked, and verified</p>
+      </div>
+
+      <!-- Step Tabs -->
+      <div class="prj-step-tabs fade-in" role="tablist">
+        <button class="prj-step-tab active" data-step="1" role="tab" aria-selected="true" aria-controls="prj-panel-1">
+          <span class="prj-step-number">1</span>
+          <span class="prj-step-label">Issues Found</span>
+        </button>
+        <span class="prj-step-arrow" aria-hidden="true">→</span>
+        <button class="prj-step-tab" data-step="2" role="tab" aria-selected="false" aria-controls="prj-panel-2">
+          <span class="prj-step-number">2</span>
+          <span class="prj-step-label">Issues Fixed</span>
+        </button>
+        <span class="prj-step-arrow" aria-hidden="true">→</span>
+        <button class="prj-step-tab" data-step="3" role="tab" aria-selected="false" aria-controls="prj-panel-3">
+          <span class="prj-step-number">3</span>
+          <span class="prj-step-label">Requirements Verified</span>
+        </button>
+      </div>
+
+      <!-- Panel Container -->
+      <div class="prj-panel-container fade-in">
+        <div class="prj-panels-wrapper" data-active="1">
+
+          <!-- Panel 1: Issue Detection -->
+          <div class="prj-panel">
+            <div class="prj-panel-header">
+              <div class="prj-header-left">
+                <span class="prj-header-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4" stroke="url(#prjGrad1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="url(#prjGrad1)" stroke-width="2"/>
+                    <defs>
+                      <linearGradient id="prjGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#059669"/>
+                        <stop offset="100%" style="stop-color:#10b981"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+                <span class="prj-header-title">AI Code Review</span>
+              </div>
+              <span class="prj-header-meta">PR #1247</span>
+            </div>
+
+            <div class="prj-content-grid">
+              <div class="prj-card">
+                <div class="prj-card-label">Complexity</div>
+                <div class="prj-complexity-display">
+                  <div class="prj-complexity-circle">
+                    <svg viewBox="0 0 64 64">
+                      <circle class="bg" cx="32" cy="32" r="25"/>
+                      <circle class="fg" cx="32" cy="32" r="25"/>
+                    </svg>
+                    <span class="prj-complexity-value">6.0</span>
+                  </div>
+                  <div class="prj-complexity-info">
+                    <span class="prj-complexity-rating">Substantial</span>
+                    <span class="prj-complexity-scale">out of 10</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="prj-card">
+                <div class="prj-card-label">Classification</div>
+                <span class="prj-intent-badge">Feature</span>
+                <div class="prj-aspects-row">
+                  <span class="prj-aspect-tag security">security</span>
+                  <span class="prj-aspect-tag database">database</span>
+                  <span class="prj-aspect-tag tests">tests</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="prj-issues-section">
+              <div class="prj-issues-header">
+                <div class="prj-issues-title">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Issues</span>
+                </div>
+                <span class="prj-issues-count">3 open</span>
+              </div>
+              <div class="prj-issues-list">
+                <div class="prj-issue-row">
+                  <span class="prj-severity-badge crit">CRIT</span>
+                  <span class="prj-status-badge new">NEW</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">SQL injection vulnerability in user query</div>
+                    <div class="prj-issue-meta">
+                      <span>src/api/auth.js:43</span>
+                      <span class="prj-issue-category">Security</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="prj-issue-row">
+                  <span class="prj-severity-badge high">HIGH</span>
+                  <span class="prj-status-badge new">NEW</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">Plain-text password comparison</div>
+                    <div class="prj-issue-meta">
+                      <span>src/api/auth.js:48</span>
+                      <span class="prj-issue-category">Security</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="prj-issue-row">
+                  <span class="prj-severity-badge med">MED</span>
+                  <span class="prj-status-badge new">NEW</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">Missing error handling for async operation</div>
+                    <div class="prj-issue-meta">
+                      <span>src/api/auth.js:45</span>
+                      <span class="prj-issue-category">Error Handling</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prj-praises-preview">
+              <svg class="prj-praises-icon" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="prj-praises-text">Good test coverage for auth flow</span>
+              <span class="prj-praises-count">2 praises</span>
+            </div>
+          </div>
+
+          <!-- Panel 2: Iterations -->
+          <div class="prj-panel">
+            <div class="prj-panel-header">
+              <div class="prj-header-left">
+                <span class="prj-header-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4" stroke="url(#prjGrad2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="url(#prjGrad2)" stroke-width="2"/>
+                    <defs>
+                      <linearGradient id="prjGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#059669"/>
+                        <stop offset="100%" style="stop-color:#10b981"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+                <span class="prj-header-title">PR Review</span>
+              </div>
+
+              <div class="prj-iteration-nav">
+                <button class="prj-nav-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <span class="prj-iteration-label">Iteration <span>2 of 2</span></span>
+                <button class="prj-nav-btn" style="opacity: 0.3;">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="prj-delta-summary">
+              <div class="prj-delta-header">
+                <span class="prj-delta-label">Changes:</span>
+              </div>
+              <div class="prj-delta-badges">
+                <span class="prj-delta-badge fixed">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  2 fixed
+                </span>
+                <span class="prj-delta-badge criteria">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  +1 story
+                </span>
+                <span class="prj-delta-badge criteria">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  +1 criteria
+                </span>
+              </div>
+              <div class="prj-criteria-changes-inline">
+                <div class="prj-criteria-change-row">
+                  <span class="prj-status-badge-compliance partial">Partial</span>
+                  <span class="prj-criteria-arrow">→</span>
+                  <span class="prj-status-badge-compliance met">Met</span>
+                  <span class="prj-criteria-change-text">Reset link expires after 24 hours</span>
+                </div>
+                <div class="prj-criteria-change-row">
+                  <span class="prj-status-badge-compliance not-met">Not Met</span>
+                  <span class="prj-criteria-arrow">→</span>
+                  <span class="prj-status-badge-compliance partial">Partial</span>
+                  <span class="prj-criteria-change-text">User receives confirmation after reset</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="prj-issues-section">
+              <div class="prj-issues-header">
+                <div class="prj-issues-title">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Issues</span>
+                </div>
+                <div style="display: flex; gap: 0.375rem;">
+                  <span class="prj-issues-count">1 open</span>
+                  <span class="prj-issues-count" style="background: rgba(52, 211, 153, 0.1); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3);">2 fixed</span>
+                </div>
+              </div>
+
+              <div class="prj-issues-list">
+                <div class="prj-issue-row fixed-issue">
+                  <span class="prj-severity-badge crit">CRIT</span>
+                  <span class="prj-status-badge fixed">FIXED</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">SQL injection vulnerability in user query</div>
+                    <div class="prj-resolved-info">
+                      <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>Resolved 2h ago</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="prj-issue-row fixed-issue">
+                  <span class="prj-severity-badge high">HIGH</span>
+                  <span class="prj-status-badge fixed">FIXED</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">Plain-text password comparison</div>
+                    <div class="prj-resolved-info">
+                      <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>Resolved 2h ago</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="prj-issue-row">
+                  <span class="prj-severity-badge med">MED</span>
+                  <span class="prj-status-badge open">OPEN</span>
+                  <div class="prj-issue-content">
+                    <div class="prj-issue-message">Missing error handling for async operation</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prj-commit-info">
+              <span>commit: a3f8c2d</span>
+              <span>2h ago</span>
+            </div>
+          </div>
+
+          <!-- Panel 3: Compliance -->
+          <div class="prj-panel">
+            <div class="prj-panel-header-compliance">
+              <div class="prj-header-left-compliance">
+                <div class="prj-header-title-compliance">
+                  <svg fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Requirements Compliance</span>
+                </div>
+                <a href="#" class="prj-ticket-link">
+                  AUTH-247
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="prj-compliance-ring">
+                <svg viewBox="0 0 48 48">
+                  <circle class="bg" cx="24" cy="24" r="20"/>
+                  <circle class="fg amber" cx="24" cy="24" r="20"/>
+                </svg>
+                <span class="prj-compliance-value amber">70%</span>
+              </div>
+            </div>
+
+            <div class="prj-overall-summary">
+              PR implements password reset flow with token auth. Email confirmation working, but confirmation email after reset not yet implemented.
+            </div>
+
+            <div class="prj-compliance-section">
+              <div class="prj-section-header-row">
+                <div class="prj-section-title">
+                  User Stories
+                  <span class="prj-section-count">2</span>
+                </div>
+                <svg class="prj-section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <div class="prj-compliance-items">
+                <div class="prj-compliance-item">
+                  <div class="prj-item-header">
+                    <span class="prj-status-badge-compliance met">Implemented</span>
+                    <span class="prj-item-text">As a user, I can request a password reset via email</span>
+                  </div>
+                </div>
+                <div class="prj-compliance-item">
+                  <div class="prj-item-header">
+                    <span class="prj-status-badge-compliance partial">Partial</span>
+                    <span class="prj-item-text">As a user, I receive confirmation after resetting</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prj-compliance-section">
+              <div class="prj-section-header-row">
+                <div class="prj-section-title">
+                  Acceptance Criteria
+                  <span class="prj-section-count">3</span>
+                </div>
+                <svg class="prj-section-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </div>
+              <div class="prj-compliance-items">
+                <div class="prj-compliance-item">
+                  <div class="prj-item-header">
+                    <span class="prj-status-badge-compliance met">Met</span>
+                    <span class="prj-item-text">User can request password reset via email</span>
+                  </div>
+                </div>
+                <div class="prj-compliance-item">
+                  <div class="prj-item-header">
+                    <span class="prj-status-badge-compliance met">Met</span>
+                    <span class="prj-item-text">Reset link expires after 24 hours</span>
+                  </div>
+                </div>
+                <div class="prj-compliance-item">
+                  <div class="prj-item-header">
+                    <span class="prj-status-badge-compliance not-met">Not Met</span>
+                    <span class="prj-item-text">User receives confirmation email after reset</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation Hint -->
+      <div class="prj-nav-hint">
+        <button class="prj-nav-hint-arrow disabled" data-direction="prev" aria-label="Previous step">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <div class="prj-progress-dots" role="tablist" aria-label="Journey steps">
+          <button class="prj-progress-dot active" data-step="1" role="tab" aria-selected="true" aria-label="Step 1: Issues Found"></button>
+          <button class="prj-progress-dot" data-step="2" role="tab" aria-selected="false" aria-label="Step 2: Issues Fixed"></button>
+          <button class="prj-progress-dot" data-step="3" role="tab" aria-selected="false" aria-label="Step 3: Requirements Verified"></button>
+        </div>
+        <button class="prj-nav-hint-arrow" data-direction="next" aria-label="Next step">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
-  <section class="features-section" id="features">
+  <section class="features-section">
     <div class="container">
       <div class="section-header fade-in">
         <h2>Everything your team needs</h2>
@@ -2211,9 +3471,10 @@
   <footer>
     <div class="container">
       <div class="footer-text">
-        &copy; 2025 Korekt. Keep your kode korekt.
+        &copy; 2026 Korekt. Keep your kode korekt.
       </div>
       <div class="footer-links">
+        <a href="docs.html">Docs</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="mailto:hello@korekt.ai">Contact</a>
@@ -2255,6 +3516,87 @@
         }
       });
     });
+
+    // PR Journey Tab Switching
+    (function() {
+      const stepTabs = document.querySelectorAll('.prj-step-tab');
+      const panelsWrapper = document.querySelector('.prj-panels-wrapper');
+      const progressDots = document.querySelectorAll('.prj-progress-dot');
+      const prevArrow = document.querySelector('.prj-nav-hint-arrow[data-direction="prev"]');
+      const nextArrow = document.querySelector('.prj-nav-hint-arrow[data-direction="next"]');
+
+      if (!panelsWrapper) return;
+
+      function setActiveStep(step) {
+        // Update panels wrapper
+        panelsWrapper.dataset.active = step;
+
+        // Update step tabs
+        stepTabs.forEach(tab => {
+          const isActive = tab.dataset.step === String(step);
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive);
+        });
+
+        // Update progress dots
+        progressDots.forEach(dot => {
+          const isActive = dot.dataset.step === String(step);
+          dot.classList.toggle('active', isActive);
+          dot.setAttribute('aria-selected', isActive);
+        });
+
+        // Update arrows
+        if (prevArrow) {
+          prevArrow.classList.toggle('disabled', step === 1);
+        }
+        if (nextArrow) {
+          nextArrow.classList.toggle('disabled', step === 3);
+        }
+      }
+
+      // Click handlers for step tabs
+      stepTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          setActiveStep(parseInt(tab.dataset.step));
+        });
+      });
+
+      // Click handlers for progress dots
+      progressDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          setActiveStep(parseInt(dot.dataset.step));
+        });
+      });
+
+      // Click handlers for arrows
+      if (prevArrow) {
+        prevArrow.addEventListener('click', () => {
+          const current = parseInt(panelsWrapper.dataset.active);
+          if (current > 1) setActiveStep(current - 1);
+        });
+      }
+      if (nextArrow) {
+        nextArrow.addEventListener('click', () => {
+          const current = parseInt(panelsWrapper.dataset.active);
+          if (current < 3) setActiveStep(current + 1);
+        });
+      }
+
+      // Keyboard navigation with arrow keys
+      const prjSection = document.querySelector('.pr-journey-section');
+      if (prjSection) {
+        prjSection.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            const current = parseInt(panelsWrapper.dataset.active);
+            if (e.key === 'ArrowLeft' && current > 1) {
+              setActiveStep(current - 1);
+            } else if (e.key === 'ArrowRight' && current < 3) {
+              setActiveStep(current + 1);
+            }
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
