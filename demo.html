@@ -483,6 +483,14 @@
       padding: 1rem 1.5rem;
     }
 
+    .form-mandatory {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
     .demo-submit:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -808,6 +816,10 @@
           </ul>
 
           <form class="demo-form" id="demoForm" novalidate>
+            <div class="form-mandatory" aria-hidden="true">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-group">
               <label for="email">Work email</label>
               <input type="email" id="email" name="email" placeholder="you@company.com" required>
@@ -865,6 +877,14 @@
 
       const email = form.email.value.trim();
       const teamSize = form.teamSize.value;
+      const honeypot = form.name.value;
+
+      if (honeypot) {
+        form.style.display = 'none';
+        message.className = 'demo-message success';
+        message.textContent = 'Thank you! We\u2019ll be in touch shortly with your demo credentials and overview video.';
+        return;
+      }
 
       if (!email || !teamSize) {
         message.className = 'demo-message error';
