@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Demo - Korekt</title>
+  <meta name="description" content="Book a demo of Korekt. Get credentials to the live demo and a 5-minute quick overview video.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============================================
+       PAGE-SPECIFIC OVERRIDES
+       ============================================ */
+    body {
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       DEMO HERO LAYOUT
+       ============================================ */
+    .demo-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 6rem;
+      padding-bottom: 4rem;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* ============================================
+       HERO DASHBOARD VISUAL (from index.html)
+       ============================================ */
+    .hero-visual-dashboard {
+      width: 100%;
+    }
+
+    .hero-dashboard {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05),
+        0 20px 50px -20px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-dashboard::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(255,255,255,0.03), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .hero-dash-title {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .hero-dash-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-dash-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-dash-period {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+    }
+
+    .hero-summary-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-summary-card {
+      background: var(--bg-elevated);
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+
+    .hero-summary-label {
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-summary-value {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .hero-summary-trend {
+      font-size: 0.5625rem;
+      margin-top: 0.25rem;
+    }
+
+    .hero-summary-trend.positive { color: var(--green-400); }
+
+    .hero-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .hero-work-mix {
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .hero-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-section-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .hero-stacked-bar {
+      display: flex;
+      height: 24px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-stacked-bar > span {
+      height: 100%;
+    }
+
+    .hero-intent-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .hero-intent-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6875rem;
+    }
+
+    .hero-intent-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .hero-intent-label {
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .hero-intent-pct {
+      color: var(--text-muted);
+    }
+
+    .hero-intent-count {
+      color: var(--text-dim);
+      font-size: 0.5625rem;
+    }
+
+    .hero-callout {
+      margin-top: 0.75rem;
+      padding: 0.5rem 0.625rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.625rem;
+      color: var(--green-400);
+    }
+
+    .hero-callout svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .hero-aspects {
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .hero-aspect-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .hero-aspect-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-aspect-label {
+      width: 56px;
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+    }
+
+    .hero-aspect-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: var(--bg-surface);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .hero-aspect-bar {
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .hero-aspect-count {
+      width: 16px;
+      font-size: 0.5625rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .hero-progress-section {
+      grid-column: span 2;
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-progress-title {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-progress-legend {
+      display: flex;
+      gap: 0.625rem;
+      font-size: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .hero-progress-legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-progress-legend i {
+      width: 6px;
+      height: 6px;
+      border-radius: 1px;
+    }
+
+    .hero-progress-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.375rem;
+      height: 60px;
+    }
+
+    .hero-progress-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-radius: 3px 3px 0 0;
+      overflow: hidden;
+    }
+
+    .hero-progress-bar > span {
+      width: 100%;
+    }
+
+    .hero-progress-bar.current {
+      box-shadow: 0 0 0 1px var(--green-400);
+    }
+
+    .hero-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.375rem;
+      font-size: 0.5rem;
+      color: var(--text-dim);
+    }
+
+    .hero-progress-labels span.current {
+      color: var(--green-400);
+      font-weight: 600;
+    }
+
+    /* ============================================
+       FORM CARD
+       ============================================ */
+    .demo-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-form-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(34, 197, 94, 0.06), transparent 60%);
+      pointer-events: none;
+    }
+
+    .demo-form-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-benefits {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .demo-benefits li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+    }
+
+    .demo-benefits li svg {
+      width: 20px;
+      height: 20px;
+      color: var(--green-400);
+      flex-shrink: 0;
+    }
+
+    .demo-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .form-group label {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-group input,
+    .form-group select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green-500);
+      box-shadow: 0 0 0 3px var(--green-glow);
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    .demo-submit {
+      margin-top: 0.5rem;
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .form-mandatory {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .demo-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Success / Error states */
+    .demo-message {
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      text-align: center;
+      display: none;
+    }
+
+    .demo-message.success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: var(--green-400);
+      display: block;
+    }
+
+    .demo-message.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: var(--red-400);
+      display: block;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-summary-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-content-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-progress-section {
+        grid-column: span 1;
+      }
+      .demo-form-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="demo.html" class="nav-cta">Book a demo</a>
+    </div>
+  </nav>
+
+  <!-- Demo Hero -->
+  <section class="demo-hero">
+    <div class="container">
+      <div class="demo-grid">
+
+        <!-- Dashboard Visual -->
+        <div class="hero-visual-dashboard">
+          <div class="hero-dashboard">
+            <div class="hero-dash-header">
+              <div class="hero-dash-title">
+                <span class="hero-dash-icon">
+                  <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="dashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#059669"/>
+                        <stop offset="100%" style="stop-color:#10b981"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                    <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#dashGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </span>
+                <span>Sprint Insights</span>
+              </div>
+              <span class="hero-dash-period">Sprint 24</span>
+            </div>
+
+            <!-- Summary cards -->
+            <div class="hero-summary-row">
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">PRs Merged</div>
+                <div class="hero-summary-value" style="color: var(--green-400)">47</div>
+                <div class="hero-summary-trend positive">+15% vs S23</div>
+              </div>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Merge Time</div>
+                <div class="hero-summary-value">18h</div>
+                <div class="hero-summary-trend positive">12% faster</div>
+              </div>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Stale PRs</div>
+                <div class="hero-summary-value" style="color: var(--red-400)">3</div>
+                <div class="hero-summary-trend" style="color: var(--text-muted)">> 7 days open</div>
+              </div>
+              <div class="hero-summary-card">
+                <div class="hero-summary-label">Active</div>
+                <div class="hero-summary-value">8<span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400">/12</span></div>
+                <div class="hero-summary-trend" style="color: var(--text-muted)">contributors</div>
+              </div>
+            </div>
+
+            <div class="hero-content-grid">
+              <!-- Work Mix -->
+              <div class="hero-work-mix">
+                <div class="hero-section-header">
+                  <span class="hero-section-title">Work Mix</span>
+                </div>
+                <div class="hero-stacked-bar">
+                  <span style="width: 42%; background: var(--blue-500)"></span>
+                  <span style="width: 28%; background: var(--red-500)"></span>
+                  <span style="width: 18%; background: var(--green-500)"></span>
+                  <span style="width: 8%; background: var(--yellow-500)"></span>
+                  <span style="width: 4%; background: #a78bfa"></span>
+                </div>
+                <div class="hero-intent-legend">
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--blue-500)"></span>
+                    <span class="hero-intent-label">Feature</span>
+                    <span class="hero-intent-pct">42%</span>
+                    <span class="hero-intent-count">(20)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--red-500)"></span>
+                    <span class="hero-intent-label">Fix</span>
+                    <span class="hero-intent-pct">28%</span>
+                    <span class="hero-intent-count">(13)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--green-500)"></span>
+                    <span class="hero-intent-label">Improve</span>
+                    <span class="hero-intent-pct">18%</span>
+                    <span class="hero-intent-count">(8)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: var(--yellow-500)"></span>
+                    <span class="hero-intent-label">Maintain</span>
+                    <span class="hero-intent-pct">8%</span>
+                    <span class="hero-intent-count">(4)</span>
+                  </div>
+                  <div class="hero-intent-item">
+                    <span class="hero-intent-dot" style="background: #a78bfa"></span>
+                    <span class="hero-intent-label">Operate</span>
+                    <span class="hero-intent-pct">4%</span>
+                    <span class="hero-intent-count">(2)</span>
+                  </div>
+                </div>
+                <div class="hero-callout">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                  Feature work up 8% vs previous sprint
+                </div>
+              </div>
+
+              <!-- Change Aspects -->
+              <div class="hero-aspects">
+                <div class="hero-section-header">
+                  <span class="hero-section-title">Change Aspects</span>
+                </div>
+                <div class="hero-aspect-bars">
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Security</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 15%; background: var(--red-400)"></div></div>
+                    <span class="hero-aspect-count">3</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Tests</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 85%; background: var(--green-400)"></div></div>
+                    <span class="hero-aspect-count">17</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Docs</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 40%; background: var(--blue-400)"></div></div>
+                    <span class="hero-aspect-count">8</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Deps</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 25%; background: #a78bfa"></div></div>
+                    <span class="hero-aspect-count">5</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Breaking</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 10%; background: var(--orange-500)"></div></div>
+                    <span class="hero-aspect-count">2</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Database</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 20%; background: #f472b6"></div></div>
+                    <span class="hero-aspect-count">4</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">Perf</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 30%; background: var(--yellow-500)"></div></div>
+                    <span class="hero-aspect-count">6</span>
+                  </div>
+                  <div class="hero-aspect-row">
+                    <span class="hero-aspect-label">CI/CD</span>
+                    <div class="hero-aspect-bar-wrap"><div class="hero-aspect-bar" style="width: 35%; background: var(--text-muted)"></div></div>
+                    <span class="hero-aspect-count">7</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress Trend -->
+              <div class="hero-progress-section">
+                <div class="hero-progress-header">
+                  <span class="hero-progress-title">Progress Trend</span>
+                  <div class="hero-progress-legend">
+                    <span><i style="background: var(--blue-500)"></i>Feature</span>
+                    <span><i style="background: var(--red-500)"></i>Fix</span>
+                    <span><i style="background: var(--green-500)"></i>Improve</span>
+                    <span><i style="background: var(--yellow-500)"></i>Maintain</span>
+                    <span><i style="background: #a78bfa"></i>Operate</span>
+                  </div>
+                </div>
+                <div class="hero-progress-chart">
+                  <div class="hero-progress-bar" style="height: 100%;">
+                    <span style="height: 35%; background: var(--blue-500)"></span>
+                    <span style="height: 30%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 10%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 85%;">
+                    <span style="height: 40%; background: var(--blue-500)"></span>
+                    <span style="height: 25%; background: var(--red-500)"></span>
+                    <span style="height: 18%; background: var(--green-500)"></span>
+                    <span style="height: 12%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 70%;">
+                    <span style="height: 30%; background: var(--blue-500)"></span>
+                    <span style="height: 35%; background: var(--red-500)"></span>
+                    <span style="height: 22%; background: var(--green-500)"></span>
+                    <span style="height: 8%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 90%;">
+                    <span style="height: 38%; background: var(--blue-500)"></span>
+                    <span style="height: 28%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 9%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar" style="height: 75%;">
+                    <span style="height: 32%; background: var(--blue-500)"></span>
+                    <span style="height: 32%; background: var(--red-500)"></span>
+                    <span style="height: 20%; background: var(--green-500)"></span>
+                    <span style="height: 11%; background: var(--yellow-500)"></span>
+                    <span style="height: 5%; background: #a78bfa"></span>
+                  </div>
+                  <div class="hero-progress-bar current" style="height: 95%;">
+                    <span style="height: 42%; background: var(--blue-500)"></span>
+                    <span style="height: 28%; background: var(--red-500)"></span>
+                    <span style="height: 18%; background: var(--green-500)"></span>
+                    <span style="height: 8%; background: var(--yellow-500)"></span>
+                    <span style="height: 4%; background: #a78bfa"></span>
+                  </div>
+                </div>
+                <div class="hero-progress-labels">
+                  <span>S19</span>
+                  <span>S20</span>
+                  <span>S21</span>
+                  <span>S22</span>
+                  <span>S23</span>
+                  <span class="current">S24</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="demo-form-card">
+          <h2>See Korekt in Action</h2>
+          <ul class="demo-benefits">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              Get credentials to the live demo
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"/>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+              </svg>
+              Receive a 5-minute quick overview video
+            </li>
+          </ul>
+
+          <form class="demo-form" id="demoForm" novalidate>
+            <div class="form-mandatory" aria-hidden="true">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="teamSize">Size of R&D team</label>
+              <select id="teamSize" name="teamSize" required>
+                <option value="" disabled selected>Select team size</option>
+                <option value="1-5">1 - 5 people</option>
+                <option value="6-15">6 - 15 people</option>
+                <option value="16-50">16 - 50 people</option>
+                <option value="51-200">51 - 200 people</option>
+                <option value="200+">200+ people</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary demo-submit">
+              Book a Demo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+
+          <div class="demo-message" id="demoMessage"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('demoForm');
+    const message = document.getElementById('demoMessage');
+    const submitBtn = form.querySelector('.demo-submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      message.className = 'demo-message';
+      message.textContent = '';
+
+      const email = form.email.value.trim();
+      const teamSize = form.teamSize.value;
+      const honeypot = form.name.value;
+
+      if (honeypot) {
+        form.style.display = 'none';
+        message.className = 'demo-message success';
+        message.textContent = 'Thank you! We\u2019ll be in touch shortly with your demo credentials and overview video.';
+        return;
+      }
+
+      if (!email || !teamSize) {
+        message.className = 'demo-message error';
+        message.textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending\u2026';
+
+      try {
+        const res = await fetch('https://app.korekt.ai/api/demo-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, teamSize })
+        });
+
+        if (!res.ok) throw new Error('Request failed');
+
+        form.style.display = 'none';
+        message.className = 'demo-message success';
+        message.textContent = 'Thank you! We\u2019ll be in touch shortly with your demo credentials and overview video.';
+      } catch (err) {
+        message.className = 'demo-message error';
+        message.textContent = 'Something went wrong. Please try again or email us at demo@korekt.ai.';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Book a Demo <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      }
+    });
+  </script>
+</body>
+</html>
