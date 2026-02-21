@@ -892,6 +892,12 @@
         return;
       }
 
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        message.className = 'demo-message error';
+        message.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Sending\u2026';
 
