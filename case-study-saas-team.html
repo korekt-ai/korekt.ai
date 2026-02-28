@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How a 32-Person Team Resolved 538 Issues They Would Have Missed - Korekt</title>
+  <meta name="description" content="How a 32-person SaaS team reviewed 993 PRs and resolved 538 potential issues — at $0.10 per review.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+
+    .case-study-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      background: var(--bg-surface);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      color: var(--green-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-study-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .case-study-section h2 {
+      font-size: 1.25rem;
+      color: var(--green-400);
+      margin-bottom: 1rem;
+    }
+
+    .case-study-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    .results-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-table td {
+      padding: 0.875rem 0;
+      color: var(--text-secondary);
+    }
+
+    .results-table td:first-child {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .results-table td:last-child {
+      text-align: right;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--green-400);
+      font-size: 1.125rem;
+    }
+
+    .issue-example {
+      margin-bottom: 1.5rem;
+    }
+
+    .issue-example strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .issue-example p {
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .case-study-quote {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green-500);
+      border-radius: 0 12px 12px 0;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .case-study-quote p {
+      color: var(--text-primary);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-quote .attribution {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-style: normal;
+    }
+
+    .case-study-meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-style: italic;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .case-study-cta {
+      text-align: center;
+      padding: 3rem 0 1rem;
+    }
+
+    .case-study-cta p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="case-study-badge">Case Study</div>
+      <h1 class="case-study-title">How a 32-Person Team Resolved 538 Issues They Would Have Missed</h1>
+      <p class="case-study-subtitle">993 pull requests reviewed, 538 issues resolved, $0.10 per review — at 200+ PRs a month.</p>
+
+      <div class="case-study-section">
+        <h2>The Team</h2>
+        <p>A 32-person engineering team building SaaS software, working across 9 active projects in Azure DevOps. The team consistently ships 200+ pull requests per month and uses Azure Boards for work item tracking.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>The Challenge</h2>
+        <p>At 200+ PRs per month, the team's human reviewers were doing their best but the sheer volume made it hard to give every PR the same level of scrutiny. The team wanted a way to add a consistent quality baseline to every pull request &mdash; an automated first pass that would catch potential issues and let human reviewers focus on architecture, design, and business logic.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>The Solution</h2>
+        <p>The team integrated Korekt with Azure DevOps using webhook automation. Every pull request across all projects now receives an automated AI review that checks for potential bugs, security considerations, performance issues, and alignment with Azure Boards work item requirements. Reviews happen automatically &mdash; no manual trigger, no changes to the developer workflow.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>Results</h2>
+        <p><strong>Over 5 months of production usage:</strong></p>
+        <table class="results-table">
+          <tr>
+            <td>Active developers</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td>Pull requests reviewed</td>
+            <td>993</td>
+          </tr>
+          <tr>
+            <td>Potential issues identified</td>
+            <td>4,009</td>
+          </tr>
+          <tr>
+            <td>Issues resolved by the team</td>
+            <td>538</td>
+          </tr>
+          <tr>
+            <td>Total AI review cost</td>
+            <td>$176</td>
+          </tr>
+          <tr>
+            <td>Average cost per review</td>
+            <td>$0.10</td>
+          </tr>
+        </table>
+        <p>The most telling metric: <strong>538 issues resolved</strong>. The team isn't just seeing the findings &mdash; they're acting on them. That's proof the tool surfaces actionable insights, not noise.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>Examples of Issues Caught Early</h2>
+        <p>Korekt catches subtle issues that are difficult to spot in high-volume review environments:</p>
+
+        <div class="issue-example">
+          <strong>Silent validation bypass</strong>
+          <p>A stored procedure's input parameter was being overwritten by a query result, causing a downstream validation check to always pass &mdash; meaning invalid data could flow through undetected.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Hidden error paths</strong>
+          <p>An exception handler was catching database errors but only handling one specific case. All other exceptions were silently swallowed &mdash; no logging, no re-throw &mdash; meaning real failures would be invisible to monitoring.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Subtle logic inversions</strong>
+          <p>A boolean variable controlling a refresh operation was initialized with inverted logic, causing the exact opposite of the intended behavior under certain conditions.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Data consistency risks</strong>
+          <p>A stored procedure performing multiple sequential updates had no transaction wrapper. If any step failed partway through, the data would be left in a partially modified state.</p>
+        </div>
+      </div>
+
+      <div class="case-study-section">
+        <h2>Actionable Findings, Not Noise</h2>
+        <p>The real test of any code review tool is whether engineers trust it enough to act on the findings. With 538 issues resolved, this team's developers are choosing to address what Korekt surfaces &mdash; not dismissing it as false positives. The tool has earned a place in their daily workflow.</p>
+      </div>
+
+      <div class="case-study-quote">
+        <p>"At our scale, consistent review quality across the whole team isn't something you can achieve manually. Korekt gives every PR the same baseline scrutiny, and our engineers trust the findings enough to act on them."</p>
+        <div class="attribution">&mdash; VP R&D, SaaS Company</div>
+      </div>
+
+      <p class="case-study-meta">This team uses Korekt with Azure DevOps and Azure Boards integration.</p>
+
+      <div class="case-study-cta">
+        <p>Want to see how Korekt works for your team?</p>
+        <a href="demo.html" class="btn btn-primary">
+          Book a demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+        <a href="case-study-enterprise-java.html">Case Studies</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
