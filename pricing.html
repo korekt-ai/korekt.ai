@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - Korekt</title>
+  <meta name="description" content="Simple, transparent pricing. Full access for every developer. Choose cloud or deploy on your own infrastructure.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============================================
+       PAGE-SPECIFIC OVERRIDES
+       ============================================ */
+    body {
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       PRICING HERO
+       ============================================ */
+    .pricing-hero {
+      padding-top: 10rem;
+      padding-bottom: 5rem;
+      text-align: center;
+    }
+
+    .pricing-hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .pricing-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-500);
+    }
+
+    .pricing-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .pricing-hero .subtitle {
+      max-width: 560px;
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       PRICING CARDS
+       ============================================ */
+    .pricing-cards {
+      padding-top: 0;
+      padding-bottom: 5rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
+    }
+
+    .pricing-card--enterprise {
+      border-color: rgba(251, 191, 36, 0.2);
+    }
+
+    .card-top {
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-tier {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--green-400);
+    }
+
+    .pricing-card--enterprise .card-tier {
+      color: var(--amber-400);
+    }
+
+    .card-label {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.25rem;
+    }
+
+    .price-dollar {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1;
+      padding-bottom: 0.5rem;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .price-period {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding-bottom: 0.5rem;
+    }
+
+    .card-billed-note {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Features list */
+    .card-features {
+      flex: 1;
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--green-500);
+    }
+
+    .feature-text {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+    }
+
+    .feature-text--secondary {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Card CTA */
+    .card-cta {
+      padding: 0 2.5rem 2.25rem;
+    }
+
+    .card-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-enterprise {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--amber-400);
+    }
+
+    .btn-enterprise:hover {
+      background: var(--bg-hover);
+      text-decoration: none;
+    }
+
+    /* ============================================
+       FAQ SECTION
+       ============================================ */
+    .faq-section {
+      padding-top: 5rem;
+      padding-bottom: var(--section-padding);
+    }
+
+    .faq-container {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .faq-container h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+
+    .faq-item {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .faq-answer {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+
+      .pricing-hero {
+        padding-top: 8rem;
+        padding-bottom: 3rem;
+      }
+
+      .card-top {
+        padding: 2rem;
+      }
+
+      .card-features {
+        padding: 1.5rem 2rem;
+      }
+
+      .card-cta {
+        padding: 0 2rem 2rem;
+      }
+
+      .price-amount {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pricing-hero h1 {
+        font-size: 2rem;
+      }
+
+      .pricing-hero .subtitle {
+        font-size: 1rem;
+      }
+
+      .card-top,
+      .card-features,
+      .card-cta {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="demo.html" class="nav-cta">Book a demo</a>
+    </div>
+  </nav>
+
+  <!-- Pricing Hero -->
+  <section class="pricing-hero">
+    <div class="container">
+      <div class="pricing-badge">
+        <span class="pricing-badge-dot"></span>
+        Pricing
+      </div>
+      <h1>Choose your plan</h1>
+      <p class="subtitle">Full access for every developer. Choose cloud or deploy on your own infrastructure.</p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pricing-cards">
+    <div class="container">
+      <div class="cards-grid">
+
+        <!-- Cloud Card -->
+        <div class="pricing-card">
+          <div class="card-top">
+            <span class="card-tier">CLOUD</span>
+            <span class="card-label">Per developer / month</span>
+            <div class="price-row">
+              <span class="price-dollar">$</span>
+              <span class="price-amount">24</span>
+              <span class="price-period">/mo</span>
+            </div>
+            <span class="card-billed-note">Billed monthly. Cancel anytime.</span>
+          </div>
+          <div class="card-features">
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Unlimited repositories</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Unlimited PR reviews</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">AI code review on every PR</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Ticket compliance verification</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Team analytics &amp; dashboards</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Custom team rules</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">JIRA, Azure Boards &amp; GitHub integration</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Security &amp; code quality checks</span>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="demo.html" class="btn btn-primary">Get started &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Enterprise On-Prem Card -->
+        <div class="pricing-card pricing-card--enterprise">
+          <div class="card-top">
+            <span class="card-tier">ENTERPRISE &middot; ON-PREM</span>
+            <span class="card-label">For teams with strict compliance needs</span>
+            <div class="price-row">
+              <span class="price-amount" style="font-size: 3rem;">Custom</span>
+            </div>
+            <span class="card-billed-note">Tailored pricing for your organization.</span>
+          </div>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-text feature-text--secondary">Everything in Cloud, plus:</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Self-hosted deployment</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Dedicated infrastructure</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">SSO &amp; SAML authentication</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Custom SLA &amp; priority support</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Data residency controls</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Air-gapped environment support</span>
+            </div>
+            <div class="feature-item">
+              <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span class="feature-text">Custom onboarding &amp; training</span>
+            </div>
+          </div>
+          <div class="card-cta">
+            <a href="demo.html" class="btn btn-enterprise">Contact Sales &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-container">
+        <h2>Common questions</h2>
+
+        <div class="faq-item">
+          <p class="faq-question">What counts as a developer?</p>
+          <p class="faq-answer">Anyone who opens pull requests that Korekt reviews. Stakeholders, PMs, and read-only users don't count.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-question">Is there a minimum team size?</p>
+          <p class="faq-answer">No. Works for teams of 2 or 200. Pricing stays the same per developer.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-question">Do you offer annual billing?</p>
+          <p class="faq-answer">Yes. Annual billing gives you 2 months free &mdash; effectively $20/developer/month.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-question">Can I try it first?</p>
+          <p class="faq-answer">Book a demo and we'll set up a pilot on your actual repos. You see real results before committing.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-question">How does the on-prem plan work?</p>
+          <p class="faq-answer">We deploy Korekt directly into your infrastructure &mdash; your code never leaves your network. Pricing is tailored to your team size and requirements. Reach out to our sales team to get started.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+        <a href="case-study-enterprise-java.html">Case Studies</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
