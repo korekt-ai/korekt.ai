@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Policy - Korekt</title>
+  <meta name="description" content="Security Policy for Korekt - how we secure our AI-powered code review platform">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific: narrower content width */
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="page-header">
+        <h1>Security Policy</h1>
+        <p class="last-updated">Last updated: March 18, 2026</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Introduction</h2>
+        <p>At Korekt, Inc. ("Korekt," "we," "us," or "our"), security is foundational to how we build and operate our AI-powered code review platform. We understand that our customers trust us with access to their source code and development infrastructure, and we take that responsibility seriously.</p>
+        <p>This Security Policy describes the measures we implement to protect your data, how we manage vulnerabilities, and how we respond to security incidents.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Infrastructure Security</h2>
+        <p>Our platform is hosted on <strong>Google Cloud Platform (GCP)</strong>, leveraging GCP's physical security, data center controls, and network infrastructure.</p>
+        <ul>
+          <li><strong>Firewall rules</strong> &mdash; Firewall rules restrict inbound traffic to only necessary ports and protocols</li>
+          <li><strong>Database access</strong> &mdash; The database is not exposed to the public internet</li>
+          <li><strong>OS maintenance</strong> &mdash; The application server OS is kept up to date with security patches applied during regular maintenance windows</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Data Protection</h2>
+        <p><strong>Encryption in transit:</strong> All data transmitted between clients and our platform is encrypted using HTTPS/TLS. API endpoints and the web interface are served over HTTPS only.</p>
+        <p><strong>Encryption at rest:</strong></p>
+        <ul>
+          <li>Integration credentials (VCS tokens, issue tracker credentials) are encrypted using <strong>AES-256</strong> before storage</li>
+          <li>User passwords are hashed with <strong>bcrypt</strong> using appropriate work factors and are never stored in plain text</li>
+        </ul>
+        <p><strong>Data minimization:</strong></p>
+        <ul>
+          <li>We request only the minimum permissions necessary from third-party integrations</li>
+          <li>VCS connections are read-only except where write access is required for posting review comments</li>
+          <li>Sensitive values (API keys, tokens, passwords) are filtered from application logs</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. Application Security</h2>
+        <ul>
+          <li><strong>Authentication</strong> &mdash; Token-based API authentication with automatic expiration. Session management with secure, HTTP-only cookies for the web interface</li>
+          <li><strong>Authorization</strong> &mdash; Role-based access control (RBAC) with organization-scoped data isolation. Users can only access data belonging to their organization</li>
+          <li><strong>Input validation</strong> &mdash; All user input is validated and sanitized server-side. Database queries use parameterized statements to prevent injection attacks</li>
+          <li><strong>Webhook verification</strong> &mdash; Incoming webhooks from VCS providers are validated using HMAC signature verification to ensure authenticity</li>
+          <li><strong>Dependency management</strong> &mdash; Third-party dependencies are regularly updated and reviewed before deployment</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. AI Processing Security</h2>
+        <p>Code submitted for review is processed by Google's Gemini API. Our AI integration is configured with the following security considerations:</p>
+        <ul>
+          <li><strong>No training on your data</strong> &mdash; Your code is not used to train or improve AI models. Processing is done on a per-request basis only</li>
+          <li><strong>No persistent storage by AI provider</strong> &mdash; Code sent to the Gemini API is not retained by Google after processing is complete</li>
+          <li><strong>Secure transmission</strong> &mdash; All communication with the Gemini API occurs over encrypted TLS connections</li>
+          <li><strong>Scoped access</strong> &mdash; Only the specific code diffs under review are sent for analysis, not your entire repository</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Vulnerability Management</h2>
+        <p>We take a proactive approach to identifying and addressing security vulnerabilities:</p>
+        <ul>
+          <li><strong>Code review</strong> &mdash; Code changes are reviewed with attention to security implications before deployment</li>
+          <li><strong>Patch management</strong> &mdash; Critical security patches for application dependencies and the operating system are applied promptly. Non-critical updates are applied during regular maintenance cycles</li>
+          <li><strong>Infrastructure updates</strong> &mdash; Managed runtime environments receive automatic security updates from the cloud provider</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>7. Incident Response</h2>
+        <p>Security incidents are managed by the company's security lead, who is responsible for coordinating the response and all communications with affected parties.</p>
+        <p>In the event of a security incident, we follow a structured response process:</p>
+        <ol>
+          <li><strong>Detection &amp; triage</strong> &mdash; Identify the scope and severity of the incident and classify it (critical, high, medium, low)</li>
+          <li><strong>Containment</strong> &mdash; Take immediate action to limit the impact, including isolating affected systems and revoking compromised credentials as needed</li>
+          <li><strong>Investigation</strong> &mdash; Determine the root cause, assess what data was affected, and identify remediation steps</li>
+          <li><strong>Remediation</strong> &mdash; Implement fixes to resolve the vulnerability and prevent recurrence</li>
+          <li><strong>Notification</strong> &mdash; Affected customers will be notified within <strong>72 hours</strong> of a confirmed incident involving their data. Notifications will include a description of the incident, the types of data affected, the steps taken to address it, and recommended actions for affected users</li>
+          <li><strong>Post-mortem</strong> &mdash; Document the root cause, timeline, impact, and corrective actions taken. Findings are used to update security controls and prevent recurrence</li>
+        </ol>
+        <p>To report a security concern or incident, contact <a href="mailto:security@korekt.ai">security@korekt.ai</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>8. Access Control</h2>
+        <ul>
+          <li><strong>Multi-tenant isolation</strong> &mdash; Customer data is logically separated by organization. Application-level controls enforce that database queries are always scoped to the authenticated user's organization</li>
+          <li><strong>Role-based access</strong> &mdash; Authorization is enforced through role-based access control, ensuring users can only perform actions appropriate to their role within an organization</li>
+          <li><strong>Production access</strong> &mdash; Direct access to production systems and databases is restricted to key-based authentication</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>9. Business Continuity</h2>
+        <ul>
+          <li><strong>Backups</strong> &mdash; Database backups are performed automatically on a regular schedule</li>
+          <li><strong>Monitoring</strong> &mdash; We monitor platform health and availability, with alerting configured for anomalies and outages</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>10. Reporting a Security Vulnerability</h2>
+        <p>If you discover a security vulnerability in our platform, we encourage responsible disclosure. Please report it to us at:</p>
+        <p><a href="mailto:security@korekt.ai"><strong>security@korekt.ai</strong></a></p>
+        <p>We ask that you:</p>
+        <ul>
+          <li>Provide a detailed description of the vulnerability, including steps to reproduce</li>
+          <li>Allow us reasonable time to investigate and address the issue before public disclosure</li>
+          <li>Avoid accessing or modifying other users' data during your research</li>
+        </ul>
+        <p>We commit to acknowledging receipt of vulnerability reports within <strong>2 business days</strong> and will keep you informed of our progress toward resolution.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>11. Policy Updates</h2>
+        <p>We review and update this Security Policy periodically to reflect changes in our practices, technology, and regulatory requirements. Updates will be posted on this page with a revised "Last updated" date.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>12. Contact</h2>
+        <p>For security-related questions or concerns, please contact us:</p>
+        <p>
+          <strong>Korekt, Inc.</strong><br>
+          Security: <a href="mailto:security@korekt.ai">security@korekt.ai</a><br>
+          General: <a href="mailto:hello@korekt.ai">hello@korekt.ai</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="security.html">Security</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
