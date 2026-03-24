@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korekt AI for Bitbucket - Documentation</title>
+  <meta name="description" content="Documentation for Korekt AI for Bitbucket - automated AI code review on every pull request.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-specific: narrower content width */
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="page-header">
+        <h1>Korekt AI for Bitbucket</h1>
+        <p class="last-updated">Automated AI code review on every pull request</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Overview</h2>
+        <p>Korekt AI for Bitbucket is a Forge app that automatically reviews every pull request in your Bitbucket workspace. When a PR is created or updated, the app analyzes the code changes using AI and posts review findings directly on the pull request as comments.</p>
+        <p>The app catches bugs, security vulnerabilities, performance issues, and best practice violations. If you have linked Jira tickets, it also verifies that the code changes match the ticket requirements.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>How It Works</h2>
+        <ol>
+          <li><strong>PR created or updated</strong> &mdash; The app receives an event when a pull request is opened or new commits are pushed</li>
+          <li><strong>Code analysis</strong> &mdash; The app fetches the PR diff and file contents, then sends them to the Korekt AI backend for analysis powered by Google Gemini</li>
+          <li><strong>Review posted</strong> &mdash; Results are posted back to the pull request as a summary comment and inline comments on specific lines where issues were found</li>
+          <li><strong>Commit status</strong> &mdash; A build status is set on the PR indicating whether the review passed, allowing you to optionally block merges when critical issues are found</li>
+        </ol>
+        <p>Reviews are fully automated &mdash; no manual action is needed after installation. The app skips duplicate reviews if the same commit has already been analyzed.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Automated PR review</strong> &mdash; Every pull request is reviewed automatically on creation and update</li>
+          <li><strong>Inline comments</strong> &mdash; Issues are posted as inline comments on the exact lines where they were found, with suggested fixes</li>
+          <li><strong>Severity ratings</strong> &mdash; Each issue is rated as critical, high, medium, or low severity</li>
+          <li><strong>Issue categories</strong> &mdash; Findings are categorized: bugs, security, performance, best practices, dependencies, and more</li>
+          <li><strong>Commit status</strong> &mdash; A pass/fail status is set on the PR for merge gating</li>
+          <li><strong>Ticket compliance</strong> &mdash; If a Jira ticket is linked (via branch name or PR title), the review checks whether the code changes satisfy the ticket requirements</li>
+          <li><strong>Duplicate prevention</strong> &mdash; The same commit is not reviewed twice</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Installation</h2>
+        <ol>
+          <li>Install <strong>Korekt AI for Bitbucket</strong> from the <a href="https://marketplace.atlassian.com/">Atlassian Marketplace</a></li>
+          <li>Select the Bitbucket workspace where you want to enable automated reviews</li>
+          <li>The app automatically provisions a Korekt account for your workspace &mdash; no additional registration is needed</li>
+        </ol>
+        <p>That's it. The app will start reviewing pull requests immediately.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Testing</h2>
+        <p>To verify the app is working after installation:</p>
+        <ol>
+          <li>Create a new pull request in any repository in the connected workspace (or push a new commit to an existing PR)</li>
+          <li>Wait for the review to complete (typically 30&ndash;60 seconds depending on the size of the changes)</li>
+          <li>Check the pull request for a summary comment from Korekt AI and inline comments on specific lines</li>
+          <li>Check the commit status &mdash; you should see a "Korekt AI" status on the PR</li>
+        </ol>
+      </div>
+
+      <div class="policy-section">
+        <h2>Dashboard</h2>
+        <p>The Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a> provides additional features beyond the automated PR reviews:</p>
+        <ul>
+          <li><strong>Review history</strong> &mdash; Browse all past code reviews across your repositories</li>
+          <li><strong>Analytics</strong> &mdash; Track code quality trends, contributor activity, and issue patterns over time</li>
+          <li><strong>Custom rules</strong> &mdash; Define project-specific review rules that the AI will enforce</li>
+          <li><strong>Branch filtering</strong> &mdash; Configure which branches should trigger reviews using glob patterns</li>
+          <li><strong>Budget management</strong> &mdash; Monitor and control AI usage costs</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Review Output</h2>
+        <p>Each review produces:</p>
+        <ul>
+          <li><strong>Summary comment</strong> &mdash; An overview of findings with severity counts, change intent classification, and an overall assessment</li>
+          <li><strong>Inline comments</strong> &mdash; Specific issues pinned to the relevant lines in the diff, each with a description, severity, category, and suggested fix where applicable</li>
+          <li><strong>Commit status</strong> &mdash; A pass or fail status indicating whether critical or high severity issues were found</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Privacy &amp; Security</h2>
+        <p>The app processes code diffs and PR metadata for the purpose of AI-powered code review. Code is sent to Google Gemini for analysis and is not retained or used for model training.</p>
+        <p>All communication between the Forge app and the Korekt backend uses Forge Invocation Tokens (FIT) &mdash; cryptographically signed JWTs issued by Atlassian. No API keys or shared secrets are used.</p>
+        <p>For full details, see our <a href="../privacy.html">Privacy Policy</a> and <a href="../security.html">Security Policy</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Support</h2>
+        <p>For questions, issues, or feature requests:</p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:support@korekt.ai">support@korekt.ai</a><br>
+          <strong>Security:</strong> <a href="mailto:security@korekt.ai">security@korekt.ai</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="../docs.html">Docs</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../security.html">Security</a>
+        <a href="../terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korekt AI for Jira - Documentation</title>
+  <meta name="description" content="Documentation for Korekt AI for Jira - AI code review insights directly in your Jira issues.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-specific: narrower content width */
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="page-header">
+        <h1>Korekt AI for Jira</h1>
+        <p class="last-updated">AI code review insights directly in your Jira issues</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Overview</h2>
+        <p>Korekt AI for Jira adds a context panel to your Jira issues that displays AI code review results from linked pull requests. When developers reference a Jira issue key in their branch name or PR title, the review results automatically appear in the Jira issue &mdash; giving project managers and team leads visibility into code quality without leaving Jira.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>How It Works</h2>
+        <ol>
+          <li><strong>Developer creates a PR</strong> &mdash; The branch name or PR title includes a Jira issue key (e.g., <code>feature/PROJ-123-add-login</code>)</li>
+          <li><strong>Korekt AI for Bitbucket reviews the PR</strong> &mdash; The code changes are analyzed and review results are stored, linked to the issue key</li>
+          <li><strong>Jira panel shows results</strong> &mdash; When anyone opens the Jira issue, the Korekt AI panel automatically fetches and displays the latest review findings</li>
+        </ol>
+        <p><strong>Note:</strong> This app displays review results &mdash; it does not perform code reviews itself. Code reviews are performed by <a href="bitbucket.html">Korekt AI for Bitbucket</a>. Both apps should be installed for the full experience.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>What the Panel Shows</h2>
+        <ul>
+          <li><strong>Change intent</strong> &mdash; Whether the code change is a feature, fix, improvement, maintenance, or operational change</li>
+          <li><strong>Complexity score</strong> &mdash; A rating of the change's complexity</li>
+          <li><strong>Severity breakdown</strong> &mdash; Count of issues found by severity (critical, high, medium, low)</li>
+          <li><strong>Ticket compliance</strong> &mdash; A percentage score indicating how well the code changes satisfy the Jira ticket requirements</li>
+          <li><strong>Change summary</strong> &mdash; A brief AI-generated description of what the code changes do</li>
+          <li><strong>Review date</strong> &mdash; When the most recent review was performed</li>
+        </ul>
+        <p>If no pull requests have been reviewed for a given issue, the panel displays &ldquo;No code reviews found for this issue.&rdquo;</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Installation</h2>
+        <ol>
+          <li>Install <strong>Korekt AI for Jira</strong> from the <a href="https://marketplace.atlassian.com/">Atlassian Marketplace</a></li>
+          <li>Select the Jira site where you want to enable review insights</li>
+          <li>The app automatically links to your Korekt account if you have <a href="bitbucket.html">Korekt AI for Bitbucket</a> installed in the same Atlassian organization</li>
+        </ol>
+        <p>No additional configuration is required. The panel appears automatically on all Jira issues.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Testing</h2>
+        <p>To verify the app is working after installation:</p>
+        <ol>
+          <li>Ensure <a href="bitbucket.html">Korekt AI for Bitbucket</a> is also installed in the same Atlassian organization</li>
+          <li>Create a pull request with a Jira issue key in the branch name (e.g., <code>PROJ-123-my-feature</code>)</li>
+          <li>Wait for the Bitbucket app to complete its review</li>
+          <li>Open the corresponding Jira issue &mdash; the Korekt AI panel should appear in the issue context showing the review results</li>
+        </ol>
+      </div>
+
+      <div class="policy-section">
+        <h2>Prerequisites</h2>
+        <p>This app works best when paired with <a href="bitbucket.html">Korekt AI for Bitbucket</a>. The Bitbucket app performs the code reviews and stores the results. The Jira app retrieves and displays those results in the issue panel.</p>
+        <p>Both apps should be installed within the same Atlassian organization for automatic account linking.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Privacy &amp; Security</h2>
+        <p>The Jira app only sends the Jira issue key to the Korekt backend to look up existing review results. No Jira issue content, descriptions, or code is sent from this app.</p>
+        <p>All communication uses Forge Invocation Tokens (FIT) &mdash; cryptographically signed JWTs issued by Atlassian. No API keys or shared secrets are used.</p>
+        <p>For full details, see our <a href="../privacy.html">Privacy Policy</a> and <a href="../security.html">Security Policy</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Support</h2>
+        <p>For questions, issues, or feature requests:</p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:support@korekt.ai">support@korekt.ai</a><br>
+          <strong>Security:</strong> <a href="mailto:security@korekt.ai">security@korekt.ai</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="../docs.html">Docs</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../security.html">Security</a>
+        <a href="../terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
