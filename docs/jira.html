@@ -67,10 +67,10 @@
         <h2>How It Works</h2>
         <ol>
           <li><strong>Developer creates a PR</strong> &mdash; The branch name or PR title includes a Jira issue key (e.g., <code>feature/PROJ-123-add-login</code>)</li>
-          <li><strong>Korekt AI for Bitbucket reviews the PR</strong> &mdash; The code changes are analyzed and review results are stored, linked to the issue key</li>
+          <li><strong>Korekt AI reviews the PR</strong> &mdash; The code changes are analyzed and review results are stored, linked to the issue key</li>
           <li><strong>Jira panel shows results</strong> &mdash; When anyone opens the Jira issue, the Korekt AI panel automatically fetches and displays the latest review findings</li>
         </ol>
-        <p><strong>Note:</strong> This app displays review results &mdash; it does not perform code reviews itself. Code reviews are performed by <a href="bitbucket.html">Korekt AI for Bitbucket</a>. Both apps should be installed for the full experience.</p>
+        <p><strong>Note:</strong> This app displays review results &mdash; it does not perform code reviews itself. Reviews can come from any connected source: <a href="bitbucket.html">Korekt AI for Bitbucket</a>, GitHub webhooks, Azure DevOps webhooks, or the Korekt CLI.</p>
       </div>
 
       <div class="policy-section">
@@ -91,7 +91,7 @@
         <ol>
           <li>Install <strong>Korekt AI for Jira</strong> from the <a href="https://marketplace.atlassian.com/">Atlassian Marketplace</a></li>
           <li>Select the Jira site where you want to enable review insights</li>
-          <li>The app automatically links to your Korekt account if you have <a href="bitbucket.html">Korekt AI for Bitbucket</a> installed in the same Atlassian organization</li>
+          <li>The app automatically provisions a Korekt account for your organization, or links to an existing one if you already have Korekt AI for Bitbucket installed</li>
         </ol>
         <p>No additional configuration is required. The panel appears automatically on all Jira issues.</p>
       </div>
@@ -100,17 +100,21 @@
         <h2>Testing</h2>
         <p>To verify the app is working after installation:</p>
         <ol>
-          <li>Ensure <a href="bitbucket.html">Korekt AI for Bitbucket</a> is also installed in the same Atlassian organization</li>
+          <li>Ensure you have at least one VCS provider connected to your Korekt account (Bitbucket, GitHub, or Azure DevOps)</li>
           <li>Create a pull request with a Jira issue key in the branch name (e.g., <code>PROJ-123-my-feature</code>)</li>
-          <li>Wait for the Bitbucket app to complete its review</li>
+          <li>Wait for the code review to complete</li>
           <li>Open the corresponding Jira issue &mdash; the Korekt AI panel should appear in the issue context showing the review results</li>
         </ol>
       </div>
 
       <div class="policy-section">
-        <h2>Prerequisites</h2>
-        <p>This app works best when paired with <a href="bitbucket.html">Korekt AI for Bitbucket</a>. The Bitbucket app performs the code reviews and stores the results. The Jira app retrieves and displays those results in the issue panel.</p>
-        <p>Both apps should be installed within the same Atlassian organization for automatic account linking.</p>
+        <h2>Connecting a VCS Provider</h2>
+        <p>The Jira app displays review results &mdash; to generate reviews, you need at least one VCS provider connected to your Korekt account. You can connect providers through the admin page or the Korekt dashboard:</p>
+        <ul>
+          <li><strong>Bitbucket</strong> &mdash; Install <a href="bitbucket.html">Korekt AI for Bitbucket</a> for fully automated reviews on every PR</li>
+          <li><strong>GitHub</strong> &mdash; Connect via the Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a></li>
+          <li><strong>Azure DevOps</strong> &mdash; Connect via the Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a></li>
+        </ul>
       </div>
 
       <div class="policy-section">
