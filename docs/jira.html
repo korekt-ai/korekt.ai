@@ -25,6 +25,37 @@
     nav .container {
       max-width: 1200px;
     }
+    .policy-section img {
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .policy-section img:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -87,9 +118,18 @@
       </div>
 
       <div class="policy-section">
+        <h2>Screenshots</h2>
+        <p><strong>Issue context panel</strong> &mdash; severity breakdown, compliance score, and change summary at a glance. <em>Click to enlarge.</em></p>
+        <img src="images/jira-context-panel.png" alt="Korekt AI context panel in a Jira issue showing PR reviews, issues found, ticket compliance, and severity breakdown" onclick="openLightbox(this.src)">
+        <br>
+        <p><strong>Issue activity panel</strong> &mdash; ticket compliance with user story and acceptance criteria tracking. <em>Click to enlarge.</em></p>
+        <img src="images/jira-activity-panel.png" alt="Korekt AI activity panel in a Jira issue showing ticket compliance, user stories, and acceptance criteria status" onclick="openLightbox(this.src)">
+      </div>
+
+      <div class="policy-section">
         <h2>Installation</h2>
         <ol>
-          <li>Install <strong>Korekt AI for Jira</strong> from the <a href="https://marketplace.atlassian.com/">Atlassian Marketplace</a></li>
+          <li>Install <strong>Korekt AI for Jira</strong> from the <a href="https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira">Atlassian Marketplace</a></li>
           <li>Select the Jira site where you want to enable review insights</li>
           <li>The app automatically provisions a Korekt account for your organization, or links to an existing one if you already have Korekt AI for Bitbucket installed</li>
         </ol>
@@ -149,5 +189,20 @@
       </div>
     </div>
   </footer>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
