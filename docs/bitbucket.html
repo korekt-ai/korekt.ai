@@ -25,6 +25,37 @@
     nav .container {
       max-width: 1200px;
     }
+    .policy-section img {
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .policy-section img:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -86,6 +117,12 @@
           <li><strong>Ticket compliance</strong> &mdash; If a Jira ticket is linked (via branch name or PR title), the review checks whether the code changes satisfy the ticket requirements</li>
           <li><strong>Duplicate prevention</strong> &mdash; The same commit is not reviewed twice</li>
         </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Screenshot</h2>
+        <p><strong>PR review comment</strong> &mdash; change summary, praises, issues with severity ratings, and suggested fixes posted directly on the pull request. <em>Click to enlarge.</em></p>
+        <img src="images/bitbucket-review-comment.png" alt="Korekt AI review comment on a Bitbucket pull request showing change summary, praises, issues found, and suggested fix" onclick="openLightbox(this.src)">
       </div>
 
       <div class="policy-section">
@@ -163,5 +200,20 @@
       </div>
     </div>
   </footer>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
