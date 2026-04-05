@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korekt AI for Jira - Documentation</title>
-  <meta name="description" content="Documentation for Korekt AI for Jira - ticket compliance and AI code review insights directly in your Jira issues.">
+  <title>Korekt AI for Azure DevOps - Documentation</title>
+  <meta name="description" content="Documentation for Korekt AI for Azure DevOps - ticket compliance and AI code review insights directly in your Azure Boards work items.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -85,32 +85,29 @@
   <main class="content">
     <div class="container">
       <div class="page-header">
-        <h1>Korekt AI for Jira</h1>
-        <p class="last-updated">Ticket compliance and AI code review insights in your Jira issues</p>
+        <h1>Korekt AI for Azure DevOps</h1>
+        <p class="last-updated">Ticket compliance and AI code review insights in your Azure Boards work items</p>
       </div>
 
       <div class="policy-section">
         <h2>Overview</h2>
-        <p>Korekt AI for Jira adds a context panel to your Jira issues that checks whether pull requests actually deliver what the ticket asked for. Each user story and acceptance criterion is verified against the code changes &mdash; showing what's been met, what's partial, and what's missing. The panel also shows a review summary, severity breakdown, and open issues.</p>
+        <p>Korekt AI for Azure DevOps adds a <strong>Korekt AI</strong> tab to your Azure Boards work items that checks whether pull requests actually deliver what the ticket asked for. Each user story and acceptance criterion is verified against the code changes &mdash; showing what's been met, what's partial, and what's missing. The tab also shows a review summary, severity breakdown, and open issues.</p>
       </div>
 
       <div class="policy-section">
-        <h2>Screenshots</h2>
-        <p><strong>Issue activity panel</strong> &mdash; ticket compliance with user story and acceptance criteria tracking. <em>Click to enlarge.</em></p>
-        <img src="images/jira-activity-panel.png" alt="Korekt AI activity panel in a Jira issue showing ticket compliance, user stories, and acceptance criteria status" onclick="openLightbox(this.src)">
-        <br>
-        <p><strong>Issue context panel</strong> &mdash; compliance score, severity breakdown, and change summary at a glance. <em>Click to enlarge.</em></p>
-        <img src="images/jira-context-panel.png" alt="Korekt AI context panel in a Jira issue showing PR reviews, issues found, ticket compliance, and severity breakdown" onclick="openLightbox(this.src)">
+        <h2>Screenshot</h2>
+        <p><strong>Work item panel</strong> &mdash; ticket compliance with user story and acceptance criteria tracking, pull requests, and open issues. <em>Click to enlarge.</em></p>
+        <img src="images/ado-work-item-panel.png" alt="Korekt AI tab in an Azure Boards work item showing ticket compliance, pull requests, and open issues" onclick="openLightbox(this.src)">
       </div>
 
       <div class="policy-section">
         <h2>How It Works</h2>
         <ol>
-          <li><strong>Developer creates a PR</strong> &mdash; The branch name or commit messages include a Jira issue key (e.g., <code>feature/PROJ-123-add-login</code> or <code>Fixes PROJ-123</code>)</li>
-          <li><strong>Korekt AI reviews the PR</strong> &mdash; The code changes are analyzed and review results are stored, linked to the issue key</li>
-          <li><strong>Jira panel shows results</strong> &mdash; When anyone opens the Jira issue, the Korekt AI panel automatically fetches and displays the latest review findings</li>
+          <li><strong>Developer creates a PR</strong> &mdash; The branch name or commit messages include a work item ID. Supported formats: <code>feature/AB#12345-add-login</code>, <code>feature/12345-add-login</code>, or type prefixes like <code>Bug-12345</code>, <code>Story-12345</code></li>
+          <li><strong>Korekt AI reviews the PR</strong> &mdash; The code changes are analyzed and review results are stored, linked to the work item</li>
+          <li><strong>Work item tab shows results</strong> &mdash; When anyone opens the work item, the Korekt AI tab automatically fetches and displays the latest review findings</li>
         </ol>
-        <p><strong>Note:</strong> This app displays review results &mdash; it does not perform code reviews itself. Reviews can come from any connected source: <a href="bitbucket.html">Korekt AI for Bitbucket</a>, GitHub webhooks, Azure DevOps webhooks, or the Korekt CLI.</p>
+        <p><strong>Note:</strong> This extension displays review results &mdash; it does not perform code reviews itself. To generate reviews, you need to connect your repositories by adding a Personal Access Token in the Korekt AI dashboard.</p>
       </div>
 
       <div class="policy-section">
@@ -118,46 +115,48 @@
         <ul>
           <li><strong>Ticket compliance</strong> &mdash; Overall compliance percentage, each user story and acceptance criterion checked against the code with MET / PARTIAL / NOT MET status</li>
           <li><strong>Review summary</strong> &mdash; Change intent (feature, fix, improvement), complexity score, severity breakdown, and an AI-generated summary of what the code does</li>
+          <li><strong>Pull requests</strong> &mdash; All reviewed PRs linked to the work item with severity counts</li>
           <li><strong>Open issues</strong> &mdash; Code review findings by severity, category, and file location</li>
         </ul>
-        <p>If no pull requests have been reviewed for a given issue, the panel displays &ldquo;No code reviews found for this issue.&rdquo;</p>
+        <p>If no pull requests have been reviewed for a given work item, the panel displays &ldquo;No code reviews found for this work item.&rdquo;</p>
       </div>
 
       <div class="policy-section">
         <h2>Installation</h2>
         <ol>
-          <li>Install <strong>Korekt AI for Jira</strong> from the <a href="https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira">Atlassian Marketplace</a></li>
-          <li>Select the Jira site where you want to enable review insights</li>
-          <li>A free trial account with a $5 review budget is automatically created for your organization, or linked to an existing one if you already have Korekt AI for Bitbucket installed</li>
+          <li>Install <strong>Korekt AI</strong> from the <a href="https://marketplace.visualstudio.com/items?itemName=korekt-ai.korekt-ai">Visual Studio Marketplace</a></li>
+          <li>A free trial account with a $5 review budget is automatically created for your organization</li>
+          <li>Go to <strong>Project Settings &rarr; Korekt AI</strong> and click <strong>Claim Organization</strong> to take ownership of the account</li>
+          <li>Connect your repositories by adding a Personal Access Token in the Korekt AI dashboard</li>
         </ol>
-        <p>No additional configuration is required. The panel appears automatically on all Jira issues. Your code is never used for model training.</p>
       </div>
 
       <div class="policy-section">
         <h2>Testing</h2>
-        <p>To verify the app is working after installation:</p>
+        <p>To verify the extension is working after installation:</p>
         <ol>
-          <li>Ensure you have at least one VCS provider connected to your Korekt account (Bitbucket, GitHub, or Azure DevOps)</li>
-          <li>Create a pull request with a Jira issue key in the branch name (e.g., <code>PROJ-123-my-feature</code>)</li>
+          <li>Ensure you have connected your repositories and have at least one project configured</li>
+          <li>Create a pull request with a work item ID in the branch name (e.g., <code>feature/AB#12345-my-feature</code> or <code>feature/12345-my-feature</code>)</li>
           <li>Wait for the code review to complete</li>
-          <li>Open the corresponding Jira issue &mdash; the Korekt AI panel should appear in the issue context showing the review results</li>
+          <li>Open the corresponding work item &mdash; the <strong>Korekt AI</strong> tab should appear showing the review results</li>
         </ol>
       </div>
 
       <div class="policy-section">
-        <h2>Connecting a VCS Provider</h2>
-        <p>The Jira app displays review results &mdash; to generate reviews, you need at least one VCS provider connected to your Korekt account. You can connect providers through the admin page or the Korekt dashboard:</p>
+        <h2>Admin Settings</h2>
+        <p>The extension adds a <strong>Korekt AI</strong> page under Project Settings where administrators can:</p>
         <ul>
-          <li><strong>Bitbucket</strong> &mdash; Install <a href="bitbucket.html">Korekt AI for Bitbucket</a> for fully automated reviews on every PR</li>
-          <li><strong>GitHub</strong> &mdash; Connect via the Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a></li>
-          <li><strong>Azure DevOps</strong> &mdash; Connect via the Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a></li>
+          <li>View connection status and linked organization</li>
+          <li>Claim an auto-provisioned organization</li>
+          <li>See activity stats: reviews this month, project count, and last review date</li>
         </ul>
       </div>
 
       <div class="policy-section">
         <h2>Privacy &amp; Security</h2>
-        <p>The Jira app only sends the Jira issue key to the Korekt backend to look up existing review results. No Jira issue content, descriptions, or code is sent from this app.</p>
-        <p>All communication uses Forge Invocation Tokens (FIT) &mdash; cryptographically signed JWTs issued by Atlassian. No API keys or shared secrets are used.</p>
+        <p>The extension only sends the work item ID to the Korekt backend to look up existing review results. No work item content, descriptions, or code is sent from this extension.</p>
+        <p>All communication uses Azure DevOps extension tokens &mdash; cryptographically signed JWTs issued by Azure DevOps. No API keys or shared secrets are stored in the browser.</p>
+        <p>Your code is never used for model training.</p>
         <p>For full details, see our <a href="../privacy.html">Privacy Policy</a> and <a href="../security.html">Security Policy</a>.</p>
       </div>
 

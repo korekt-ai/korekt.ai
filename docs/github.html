@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korekt AI for Bitbucket - Documentation</title>
-  <meta name="description" content="Documentation for Korekt AI for Bitbucket - automated AI code review and ticket compliance on every pull request.">
+  <title>Korekt AI for GitHub - Documentation</title>
+  <meta name="description" content="Documentation for Korekt AI for GitHub - automated AI code review and ticket compliance on every pull request.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="../styles.css">
@@ -85,42 +85,56 @@
   <main class="content">
     <div class="container">
       <div class="page-header">
-        <h1>Korekt AI for Bitbucket</h1>
-        <p class="last-updated">Automated AI code review on every pull request</p>
+        <h1>Korekt AI for GitHub</h1>
+        <p class="last-updated">Automated code review and ticket compliance on every pull request</p>
       </div>
 
       <div class="policy-section">
         <h2>Overview</h2>
-        <p>Korekt AI for Bitbucket is a Forge app that automatically reviews every pull request in your Bitbucket workspace. When a PR is created or updated, the app analyzes the code changes using AI and posts review findings directly on the pull request as comments.</p>
-        <p>The app catches bugs, security vulnerabilities, performance issues, and best practice violations. If you have linked Jira tickets, it verifies that the code changes satisfy the ticket requirements &mdash; checking each user story and acceptance criterion with MET / PARTIAL / NOT MET status.</p>
+        <p>Korekt AI for GitHub is a GitHub App that automatically reviews every pull request. When a PR is created or updated, the app analyzes the code changes and posts findings directly on the pull request &mdash; inline comments on specific lines, a summary comment with severity breakdown, and a commit status for merge gating.</p>
+        <p>If you have linked tickets, the review verifies that the code changes satisfy the requirements &mdash; checking each user story and acceptance criterion with Fully Implemented / Partial / Not Met status. Ticket compliance works with GitHub Issues out of the box, and also with Jira Cloud and Azure Boards if connected.</p>
       </div>
 
       <div class="policy-section">
-        <h2>Screenshot</h2>
-        <p><strong>PR review comment</strong> &mdash; change summary, praises, issues with severity ratings, and suggested fixes posted directly on the pull request. <em>Click to enlarge.</em></p>
-        <img src="images/bitbucket-review-comment.png" alt="Korekt AI review comment on a Bitbucket pull request showing change summary, praises, issues found, and suggested fix" onclick="openLightbox(this.src)">
+        <h2>Screenshots</h2>
+        <p><strong>Ticket compliance</strong> &mdash; user story and acceptance criteria verification posted directly on the pull request. <em>Click to enlarge.</em></p>
+        <img src="images/marketplace-ticket-compliance.png" alt="Korekt AI ticket compliance comment on a GitHub pull request showing user story compliance, acceptance criteria status, and overall compliance assessment" onclick="openLightbox(this.src)">
+        <br>
+        <p><strong>Code review comment</strong> &mdash; change summary, praises, issues with severity ratings, and suggested fixes. <em>Click to enlarge.</em></p>
+        <img src="images/marketplace-code-review.png" alt="Korekt AI review comment on a GitHub pull request showing change summary, praises, issues found, and suggested fix" onclick="openLightbox(this.src)">
       </div>
 
       <div class="policy-section">
         <h2>How It Works</h2>
         <ol>
-          <li><strong>PR created or updated</strong> &mdash; The app receives an event when a pull request is opened or new commits are pushed</li>
+          <li><strong>PR created or updated</strong> &mdash; The app receives a webhook when a pull request is opened or new commits are pushed</li>
           <li><strong>Code analysis</strong> &mdash; The app fetches the PR diff and file contents, then sends them to the Korekt AI backend for analysis powered by Google Gemini</li>
-          <li><strong>Review posted</strong> &mdash; Results are posted back to the pull request as a summary comment and inline comments on specific lines where issues were found</li>
-          <li><strong>Commit status</strong> &mdash; A build status is set on the PR indicating whether the review passed, allowing you to optionally block merges when critical issues are found</li>
+          <li><strong>Review posted</strong> &mdash; Results are posted back as a summary comment and inline comments on specific lines where issues were found</li>
+          <li><strong>Commit status</strong> &mdash; A pass/fail status is set on the PR, allowing you to optionally block merges when critical issues are found</li>
         </ol>
         <p>Reviews are fully automated &mdash; no manual action is needed after installation. The app skips duplicate reviews if the same commit has already been analyzed.</p>
       </div>
 
       <div class="policy-section">
+        <h2>Ticket Compliance</h2>
+        <p>Korekt AI checks whether the code changes actually satisfy the ticket requirements. This works with multiple ticketing systems:</p>
+        <ul>
+          <li><strong>GitHub Issues</strong> &mdash; Zero configuration. Reference an issue number in your branch name (e.g., <code>feature/123-add-login</code>) or commit messages (e.g., <code>Fixes #123</code>) and the review automatically checks compliance against the issue description</li>
+          <li><strong>Jira Cloud</strong> &mdash; Connect your Jira site in the Korekt dashboard. Use Jira issue keys in branch names or commit messages (e.g., <code>feature/PROJ-123-add-login</code> or <code>Fixes PROJ-123</code>)</li>
+          <li><strong>Azure Boards</strong> &mdash; Connect your Azure DevOps organization in the Korekt dashboard. Use work item IDs in branch names (e.g., <code>feature/AB#12345-add-login</code> or <code>feature/12345-add-login</code>)</li>
+        </ul>
+        <p>Each user story and acceptance criterion is individually verified, with evidence linking back to specific files and lines in the code.</p>
+      </div>
+
+      <div class="policy-section">
         <h2>Key Features</h2>
         <ul>
-          <li><strong>Ticket compliance</strong> &mdash; If a Jira ticket is linked (via branch name or PR title), the review checks whether the code changes satisfy the ticket requirements, with per-story and per-criterion verification</li>
+          <li><strong>Ticket compliance</strong> &mdash; Verifies code against user stories and acceptance criteria from linked tickets, with per-requirement MET / PARTIAL / NOT MET status</li>
           <li><strong>Automated PR review</strong> &mdash; Every pull request is reviewed automatically on creation and update</li>
-          <li><strong>Inline comments</strong> &mdash; Issues are posted as inline comments on the exact lines where they were found, with suggested fixes</li>
-          <li><strong>Severity ratings</strong> &mdash; Each issue is rated as critical, high, medium, or low severity</li>
-          <li><strong>Issue categories</strong> &mdash; Findings are categorized: bugs, security, performance, best practices, dependencies, and more</li>
-          <li><strong>Commit status</strong> &mdash; A pass/fail status is set on the PR for merge gating</li>
+          <li><strong>Inline comments</strong> &mdash; Issues posted on the exact lines where they were found, with suggested fixes</li>
+          <li><strong>Severity ratings</strong> &mdash; Each issue rated as critical, high, medium, or low across 9 categories</li>
+          <li><strong>Commit status</strong> &mdash; Pass/fail status on the PR for merge gating</li>
+          <li><strong>Custom rules</strong> &mdash; Define organization-specific review rules with severity, category, and examples</li>
           <li><strong>Duplicate prevention</strong> &mdash; The same commit is not reviewed twice</li>
         </ul>
       </div>
@@ -128,18 +142,18 @@
       <div class="policy-section">
         <h2>Installation</h2>
         <ol>
-          <li>Install <strong>Korekt AI for Bitbucket</strong> from the <a href="https://marketplace.atlassian.com/">Atlassian Marketplace</a></li>
-          <li>Select the Bitbucket workspace where you want to enable automated reviews</li>
-          <li>A free trial account with a $5 review budget is automatically created for your workspace &mdash; no additional registration is needed</li>
+          <li>Install <strong>Korekt AI</strong> from <a href="https://github.com/apps/korekt-ai">GitHub Apps</a></li>
+          <li>Select the repositories you want to review</li>
+          <li>A free trial account with a $5 review budget is automatically created for your organization</li>
         </ol>
-        <p>That's it. The app will start reviewing pull requests immediately. Your code is never used for model training.</p>
+        <p>That's it &mdash; no PAT or API keys needed. The GitHub App uses native OAuth with short-lived installation tokens. The app will start reviewing pull requests immediately. Your code is never used for model training.</p>
       </div>
 
       <div class="policy-section">
         <h2>Testing</h2>
         <p>To verify the app is working after installation:</p>
         <ol>
-          <li>Create a new pull request in any repository in the connected workspace (or push a new commit to an existing PR)</li>
+          <li>Create a new pull request in any connected repository (or push a new commit to an existing PR)</li>
           <li>Wait for the review to complete (typically 30&ndash;60 seconds depending on the size of the changes)</li>
           <li>Check the pull request for a summary comment from Korekt AI and inline comments on specific lines</li>
           <li>Check the commit status &mdash; you should see a "Korekt AI" status on the PR</li>
@@ -147,31 +161,9 @@
       </div>
 
       <div class="policy-section">
-        <h2>Dashboard</h2>
-        <p>The Korekt dashboard at <a href="https://app.korekt.ai">app.korekt.ai</a> provides additional features beyond the automated PR reviews:</p>
-        <ul>
-          <li><strong>Review history</strong> &mdash; Browse all past code reviews across your repositories</li>
-          <li><strong>Analytics</strong> &mdash; Track code quality trends, contributor activity, and issue patterns over time</li>
-          <li><strong>Custom rules</strong> &mdash; Define project-specific review rules that the AI will enforce</li>
-          <li><strong>Branch filtering</strong> &mdash; Configure which branches should trigger reviews using glob patterns</li>
-          <li><strong>Budget management</strong> &mdash; Monitor and control AI usage costs</li>
-        </ul>
-      </div>
-
-      <div class="policy-section">
-        <h2>Review Output</h2>
-        <p>Each review produces:</p>
-        <ul>
-          <li><strong>Summary comment</strong> &mdash; An overview of findings with severity counts, change intent classification, and an overall assessment</li>
-          <li><strong>Inline comments</strong> &mdash; Specific issues pinned to the relevant lines in the diff, each with a description, severity, category, and suggested fix where applicable</li>
-          <li><strong>Commit status</strong> &mdash; A pass or fail status indicating whether critical or high severity issues were found</li>
-        </ul>
-      </div>
-
-      <div class="policy-section">
         <h2>Privacy &amp; Security</h2>
-        <p>The app processes code diffs and PR metadata for the purpose of AI-powered code review. Code is sent to Google Gemini for analysis and is not retained or used for model training.</p>
-        <p>All communication between the Forge app and the Korekt backend uses Forge Invocation Tokens (FIT) &mdash; cryptographically signed JWTs issued by Atlassian. No API keys or shared secrets are used.</p>
+        <p>The GitHub App uses short-lived installation tokens (60-minute expiry) with minimal required permissions. No long-lived credentials are stored.</p>
+        <p>Code is sent to Google Gemini for analysis and is not retained or used for model training. Review results are stored in your Korekt account for the configured retention period.</p>
         <p>For full details, see our <a href="../privacy.html">Privacy Policy</a> and <a href="../security.html">Security Policy</a>.</p>
       </div>
 

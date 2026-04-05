@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korekt CLI Documentation</title>
+  <meta name="description" content="Documentation for Korekt CLI - AI-powered code review from your terminal.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Page-specific: narrower content width */
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+    <!--
+      NOTE: Keep this content in sync with korekt-cli/README.md
+    -->
+    <div class="markdown-body">
+      <h1>Korekt CLI</h1>
+      <p>AI-powered code review from your terminal.</p>
+
+      <h2>Installation</h2>
+      <pre><code>npm install -g korekt-cli</code></pre>
+
+      <h2>Setup</h2>
+      <pre><code>kk config --key YOUR_API_KEY</code></pre>
+
+      <h2>Local Workflow</h2>
+
+      <h3>Review Your Changes</h3>
+      <pre><code>kk review main              # Review commits against main
+kk stg                      # Review staged changes
+kk diff                     # Review unstaged changes</code></pre>
+
+      <h3>Choose AI Model</h3>
+      <pre><code>kk review -m                        # Interactive model picker
+kk review -m gemini-3-flash-preview # Direct selection</code></pre>
+      <p>Available models (ranked by recommendation):</p>
+      <ol>
+        <li><strong>gemini-3-flash-preview</strong> - Most efficient, recommended for daily use</li>
+        <li><strong>gemini-3.1-pro-preview</strong> - Best quality for complex reviews</li>
+        <li><strong>gemini-2.5-pro</strong> - High quality alternative</li>
+        <li><strong>gemini-2.5-flash</strong> - Legacy, avoid</li>
+      </ol>
+
+      <h3>Ignore Files</h3>
+      <pre><code>kk review main --ignore "*.lock" "dist/*"</code></pre>
+
+      <h2>CI/CD Integration</h2>
+
+      <h3>Post to Pull Request</h3>
+      <pre><code>kk review --comment         # Auto-posts findings to PR</code></pre>
+      <p>Works with GitHub Actions, Azure Pipelines, and Bitbucket Pipelines.</p>
+
+      <h3>Post to Ticket</h3>
+      <pre><code>kk review --post-ticket     # Posts findings to linked Jira/Azure ticket</code></pre>
+      <p>Ticket IDs are automatically extracted from branch names and commit messages.</p>
+
+      <h3>JSON Output</h3>
+      <pre><code>kk review main --json       # Machine-readable output</code></pre>
+
+      <h2>Environment Variables</h2>
+      <pre><code>export KOREKT_API_KEY="your-api-key"</code></pre>
+      <p>Alternative to <code>kk config --key</code>. Config file takes precedence.</p>
+
+      <h2>Help</h2>
+      <pre><code>kk --help
+kk review --help</code></pre>
+
+      <h2>License</h2>
+      <p>MIT - See <a href="https://github.com/korekt-ai/korekt-cli/blob/master/LICENSE" target="_blank" rel="noopener">LICENSE</a> for details.</p>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="../docs.html">Docs</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../security.html">Security</a>
+        <a href="../terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

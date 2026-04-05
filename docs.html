@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korekt CLI Documentation</title>
-  <meta name="description" content="Documentation for Korekt CLI - AI-powered code review from your terminal.">
+  <title>Documentation - Korekt AI</title>
+  <meta name="description" content="Korekt AI documentation - CLI, Bitbucket, Jira, and Azure DevOps integrations.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -18,12 +18,46 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page-specific: narrower content width */
     .container {
       max-width: 800px;
     }
     nav .container {
       max-width: 1200px;
+    }
+    .docs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+      .docs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .docs-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 20px 24px;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .docs-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .docs-card h3 {
+      color: #e0e0e0;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+    .docs-card p {
+      color: #858585;
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -53,64 +87,37 @@
 
   <main class="content">
     <div class="container">
-    <!--
-      NOTE: Keep this content in sync with korekt-cli/README.md
-    -->
-    <div class="markdown-body">
-      <h1>Korekt CLI</h1>
-      <p>AI-powered code review from your terminal.</p>
+      <div class="page-header">
+        <h1>Documentation</h1>
+        <p class="last-updated">Guides for Korekt AI integrations and tools</p>
+      </div>
 
-      <h2>Installation</h2>
-      <pre><code>npm install -g korekt-cli</code></pre>
+      <div class="docs-grid">
+        <a href="docs/cli.html" class="docs-card">
+          <h3>Korekt CLI</h3>
+          <p>AI-powered code review from your terminal. Install, configure, and run reviews locally or in CI/CD pipelines.</p>
+        </a>
 
-      <h2>Setup</h2>
-      <pre><code>kk config --key YOUR_API_KEY</code></pre>
+        <a href="docs/github.html" class="docs-card">
+          <h3>Korekt AI for GitHub</h3>
+          <p>Automated PR reviews with ticket compliance. No PAT needed &mdash; works with GitHub Issues, Jira, and Azure Boards.</p>
+        </a>
 
-      <h2>Local Workflow</h2>
+        <a href="docs/bitbucket.html" class="docs-card">
+          <h3>Korekt AI for Bitbucket</h3>
+          <p>Automated AI code review on every pull request. Inline comments, severity ratings, and ticket compliance.</p>
+        </a>
 
-      <h3>Review Your Changes</h3>
-      <pre><code>kk review main              # Review commits against main
-kk stg                      # Review staged changes
-kk diff                     # Review unstaged changes</code></pre>
+        <a href="docs/jira.html" class="docs-card">
+          <h3>Korekt AI for Jira</h3>
+          <p>Ticket compliance and review insights directly in your Jira issues. See whether PRs deliver what the ticket asked for.</p>
+        </a>
 
-      <h3>Choose AI Model</h3>
-      <pre><code>kk review -m                        # Interactive model picker
-kk review -m gemini-3-flash-preview # Direct selection</code></pre>
-      <p>Available models (ranked by recommendation):</p>
-      <ol>
-        <li><strong>gemini-3-flash-preview</strong> - Most efficient, recommended for daily use</li>
-        <li><strong>gemini-3.1-pro-preview</strong> - Best quality for complex reviews</li>
-        <li><strong>gemini-2.5-pro</strong> - High quality alternative</li>
-        <li><strong>gemini-2.5-flash</strong> - Legacy, avoid</li>
-      </ol>
-
-      <h3>Ignore Files</h3>
-      <pre><code>kk review main --ignore "*.lock" "dist/*"</code></pre>
-
-      <h2>CI/CD Integration</h2>
-
-      <h3>Post to Pull Request</h3>
-      <pre><code>kk review --comment         # Auto-posts findings to PR</code></pre>
-      <p>Works with GitHub Actions, Azure Pipelines, and Bitbucket Pipelines.</p>
-
-      <h3>Post to Ticket</h3>
-      <pre><code>kk review --post-ticket     # Posts findings to linked Jira/Azure ticket</code></pre>
-      <p>Ticket IDs are automatically extracted from branch names and commit messages.</p>
-
-      <h3>JSON Output</h3>
-      <pre><code>kk review main --json       # Machine-readable output</code></pre>
-
-      <h2>Environment Variables</h2>
-      <pre><code>export KOREKT_API_KEY="your-api-key"</code></pre>
-      <p>Alternative to <code>kk config --key</code>. Config file takes precedence.</p>
-
-      <h2>Help</h2>
-      <pre><code>kk --help
-kk review --help</code></pre>
-
-      <h2>License</h2>
-      <p>MIT - See <a href="https://github.com/korekt-ai/korekt-cli/blob/master/LICENSE" target="_blank" rel="noopener">LICENSE</a> for details.</p>
-    </div>
+        <a href="docs/azure-devops.html" class="docs-card">
+          <h3>Korekt AI for Azure DevOps</h3>
+          <p>Ticket compliance and review insights in your Azure Boards work items. User story and acceptance criteria verification.</p>
+        </a>
+      </div>
     </div>
   </main>
 
