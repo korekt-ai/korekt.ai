@@ -1,5 +1,7 @@
 # Korekt AI
 
+> Full documentation: https://korekt.ai/llms-full.txt
+
 > AI-powered code review platform that checks whether pull requests deliver what the ticket asked for. Automated ticket compliance verification, inline PR comments with suggested fixes, severity ratings, and commit statuses for merge gating. Works with GitHub, Bitbucket, Azure DevOps, Jira, and Azure Boards.
 
 ## Product
