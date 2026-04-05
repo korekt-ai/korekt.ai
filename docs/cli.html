@@ -28,6 +28,33 @@
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
+  <!-- Structured Data: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to install and use Korekt CLI",
+    "description": "Install the Korekt CLI for AI-powered code review from your terminal.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Install the CLI",
+        "text": "Run: npm install -g korekt-cli"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Configure your API key",
+        "text": "Run: kk config --key YOUR_API_KEY"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Review your code",
+        "text": "Run: kk review main — to review commits against main. Or use kk stg for staged changes and kk diff for unstaged changes."
+      }
+    ]
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
