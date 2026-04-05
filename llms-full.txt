@@ -1,0 +1,334 @@
+# Korekt AI — Full Documentation
+
+AI-powered code review platform that checks whether pull requests deliver what the ticket asked for. Automated ticket compliance verification, inline PR comments with suggested fixes, severity ratings, and commit statuses for merge gating.
+
+Website: https://korekt.ai
+Dashboard: https://app.korekt.ai
+
+---
+
+## Korekt AI for GitHub
+
+Automated code review and ticket compliance on every pull request.
+
+### Overview
+
+Korekt AI for GitHub is a GitHub App that automatically reviews every pull request. When a PR is created or updated, the app analyzes the code changes and posts findings directly on the pull request — inline comments on specific lines, a summary comment with severity breakdown, and a commit status for merge gating.
+
+If you have linked tickets, the review verifies that the code changes satisfy the requirements — checking each user story and acceptance criterion with Fully Implemented / Partial / Not Met status. Ticket compliance works with GitHub Issues out of the box, and also with Jira Cloud and Azure Boards if connected.
+
+### How It Works
+
+1. PR created or updated — The app receives a webhook when a pull request is opened or new commits are pushed
+2. Code analysis — The app fetches the PR diff and file contents, then sends them to the Korekt AI backend for analysis powered by Google Gemini
+3. Review posted — Results are posted back as a summary comment and inline comments on specific lines where issues were found
+4. Commit status — A pass/fail status is set on the PR, allowing you to optionally block merges when critical issues are found
+
+Reviews are fully automated — no manual action is needed after installation. The app skips duplicate reviews if the same commit has already been analyzed.
+
+### Ticket Compliance
+
+Korekt AI checks whether the code changes actually satisfy the ticket requirements. This works with multiple ticketing systems:
+
+- GitHub Issues — Zero configuration. Reference an issue number in your branch name (e.g., feature/123-add-login) or commit messages (e.g., Fixes #123) and the review automatically checks compliance against the issue description
+- Jira Cloud — Connect your Jira site in the Korekt dashboard. Use Jira issue keys in branch names or commit messages (e.g., feature/PROJ-123-add-login or Fixes PROJ-123)
+- Azure Boards — Connect your Azure DevOps organization in the Korekt dashboard. Use work item IDs in branch names (e.g., feature/AB#12345-add-login or feature/12345-add-login)
+
+Each user story and acceptance criterion is individually verified, with evidence linking back to specific files and lines in the code.
+
+### Key Features
+
+- Ticket compliance — Verifies code against user stories and acceptance criteria from linked tickets, with per-requirement MET / PARTIAL / NOT MET status
+- Automated PR review — Every pull request is reviewed automatically on creation and update
+- Inline comments — Issues posted on the exact lines where they were found, with suggested fixes
+- Severity ratings — Each issue rated as critical, high, medium, or low across 9 categories
+- Commit status — Pass/fail status on the PR for merge gating
+- Custom rules — Define organization-specific review rules with severity, category, and examples
+- Duplicate prevention — The same commit is not reviewed twice
+
+### Installation
+
+1. Install Korekt AI from https://github.com/apps/korekt-ai
+2. Select the repositories you want to review
+3. A free trial account with a $5 review budget is automatically created for your organization
+
+No PAT or API keys needed. The GitHub App uses native OAuth with short-lived installation tokens.
+
+---
+
+## Korekt AI for Bitbucket
+
+Automated AI code review on every pull request.
+
+### Overview
+
+Korekt AI for Bitbucket is a Forge app that automatically reviews every pull request in your Bitbucket workspace. When a PR is created or updated, the app analyzes the code changes using AI and posts review findings directly on the pull request as comments.
+
+The app catches bugs, security vulnerabilities, performance issues, and best practice violations. If you have linked Jira tickets, it verifies that the code changes satisfy the ticket requirements — checking each user story and acceptance criterion with MET / PARTIAL / NOT MET status.
+
+### Key Features
+
+- Ticket compliance — If a Jira ticket is linked (via branch name or PR title), the review checks whether the code changes satisfy the ticket requirements, with per-story and per-criterion verification
+- Automated PR review — Every pull request is reviewed automatically on creation and update
+- Inline comments — Issues are posted as inline comments on the exact lines where they were found, with suggested fixes
+- Severity ratings — Each issue is rated as critical, high, medium, or low severity
+- Issue categories — Findings are categorized: bugs, security, performance, best practices, dependencies, and more
+- Commit status — A pass/fail status is set on the PR for merge gating
+- Duplicate prevention — The same commit is not reviewed twice
+
+### Installation
+
+1. Install Korekt AI for Bitbucket from the Atlassian Marketplace
+2. Select the Bitbucket workspace where you want to enable automated reviews
+3. A free trial account with a $5 review budget is automatically created for your workspace
+
+The app will start reviewing pull requests immediately.
+
+---
+
+## Korekt AI for Jira
+
+Ticket compliance and AI code review insights in your Jira issues.
+
+### Overview
+
+Korekt AI for Jira adds a context panel to your Jira issues that checks whether pull requests actually deliver what the ticket asked for. Each user story and acceptance criterion is verified against the code changes — showing what's been met, what's partial, and what's missing. The panel also shows a review summary, severity breakdown, and open issues.
+
+### What the Panel Shows
+
+- Ticket compliance — Overall compliance percentage, each user story and acceptance criterion checked against the code with MET / PARTIAL / NOT MET status
+- Review summary — Change intent (feature, fix, improvement), complexity score, severity breakdown, and an AI-generated summary of what the code does
+- Open issues — Code review findings by severity, category, and file location
+
+### How It Works
+
+1. Developer creates a PR — The branch name or commit messages include a Jira issue key (e.g., feature/PROJ-123-add-login or Fixes PROJ-123)
+2. Korekt AI reviews the PR — The code changes are analyzed and review results are stored, linked to the issue key
+3. Jira panel shows results — When anyone opens the Jira issue, the Korekt AI panel automatically fetches and displays the latest review findings
+
+This app displays review results — it does not perform code reviews itself. Reviews can come from any connected source: Korekt AI for Bitbucket, GitHub webhooks, Azure DevOps webhooks, or the Korekt CLI.
+
+### Installation
+
+1. Install Korekt AI for Jira from the Atlassian Marketplace
+2. Select the Jira site where you want to enable review insights
+3. A free trial account with a $5 review budget is automatically created for your organization
+
+---
+
+## Korekt AI for Azure DevOps
+
+Ticket compliance and AI code review insights in your Azure Boards work items.
+
+### Overview
+
+Korekt AI for Azure DevOps adds a Korekt AI tab to your Azure Boards work items that checks whether pull requests actually deliver what the ticket asked for. Each user story and acceptance criterion is verified against the code changes — showing what's been met, what's partial, and what's missing. The tab also shows a review summary, severity breakdown, and open issues.
+
+### What the Panel Shows
+
+- Ticket compliance — Overall compliance percentage, each user story and acceptance criterion checked against the code with MET / PARTIAL / NOT MET status
+- Review summary — Change intent (feature, fix, improvement), complexity score, severity breakdown, and an AI-generated summary of what the code does
+- Pull requests — All reviewed PRs linked to the work item with severity counts
+- Open issues — Code review findings by severity, category, and file location
+
+### How It Works
+
+1. Developer creates a PR — The branch name or commit messages include a work item ID. Supported formats: feature/AB#12345-add-login, feature/12345-add-login, or type prefixes like Bug-12345, Story-12345
+2. Korekt AI reviews the PR — The code changes are analyzed and review results are stored, linked to the work item
+3. Work item tab shows results — When anyone opens the work item, the Korekt AI tab automatically fetches and displays the latest review findings
+
+This extension displays review results — it does not perform code reviews itself. To generate reviews, you need to connect your repositories by adding a Personal Access Token in the Korekt AI dashboard.
+
+### Installation
+
+1. Install Korekt AI from the Visual Studio Marketplace (https://marketplace.visualstudio.com/items?itemName=korekt-ai.korekt-ai)
+2. A free trial account with a $5 review budget is automatically created for your organization
+3. Go to Project Settings → Korekt AI and click Claim Organization to take ownership of the account
+4. Connect your repositories by adding a Personal Access Token in the Korekt AI dashboard
+
+---
+
+## Korekt CLI
+
+AI-powered code review from your terminal.
+
+### Installation
+
+npm install -g korekt-cli
+
+### Setup
+
+kk config --key YOUR_API_KEY
+
+### Local Workflow
+
+Review your changes:
+- kk review main — Review commits against main
+- kk stg — Review staged changes
+- kk diff — Review unstaged changes
+
+Choose AI model:
+- kk review -m — Interactive model picker
+- kk review -m gemini-3-flash-preview — Direct selection
+
+Ignore files:
+- kk review main --ignore "*.lock" "dist/*"
+
+### CI/CD Integration
+
+Post to pull request:
+- kk review --comment — Auto-posts findings to PR (works with GitHub Actions, Azure Pipelines, Bitbucket Pipelines)
+
+Post to ticket:
+- kk review --post-ticket — Posts findings to linked Jira/Azure ticket (ticket IDs extracted from branch names and commit messages)
+
+JSON output:
+- kk review main --json — Machine-readable output
+
+### Environment Variables
+
+KOREKT_API_KEY — Alternative to kk config --key. Config file takes precedence.
+
+---
+
+## Platform Dashboard
+
+The Korekt AI dashboard at app.korekt.ai provides analytics, team management, and project configuration beyond the automated PR reviews.
+
+### Pull Requests
+
+- PR list with status filters (Open / Merged / Stale)
+- Search by title or author, date range filtering with sprint picker
+- Per-PR details: review iteration history, changed lines, files changed, severity breakdown
+- Stale PR detection (open > 7 days) with attention alerts
+- Tracks review iterations — when a PR is updated after review, the next review tracks which previous issues were fixed and which are still open
+
+### Sprint Insights
+
+- Summary cards: PRs merged (with trend), average merge time, stale PRs, active contributors
+- Work mix analysis: Feature / Fix / Improve / Maintain / Operate percentages compared to previous period
+- Change aspects frequency: breaking changes, security issues, database changes, performance impacts
+- Sprint trend data across last 6 sprints with work profile and complexity breakdowns
+- Team performance comparisons
+- Filter by team and date range with sprint presets
+
+### Contributors & Team Analytics
+
+- Contributor profiles with work type distribution (Feature / Fix / Improve / Maintain / Operate)
+- Per-contributor metrics: average complexity, issues per review, praise-to-issue ratio, substantial % (complexity > 5.0), average lines per review
+- Aspect filters: filter contributors by security issues, breaking changes, database changes, performance issues
+- Recent activity timeline (last 4 days with review counts)
+- Contributor identity resolution — automatic deduplication when the same person uses different emails across VCS providers
+- Team management: create teams, assign contributors, view team-level analytics
+
+### Analytics
+
+- Analysis volume over time (time-series chart)
+- Issue severity breakdown (critical / high / medium / low)
+- Intent totals: work type distribution across the organization
+- Aspect frequency: breaking / security / database / performance trends
+- Weekly activity stats with trend comparison to previous period
+- Filter by project group, date range, or custom period
+- Cost tracking: total spend, average processing time per analysis
+
+### Review Details
+
+- Full analysis modal showing all findings from a code review
+- Change intent and change aspects classification
+- Complexity scoring (1-10 scale with Trivial / Minor / Moderate / Substantial / Critical ratings)
+- Praises — highlights clean code, good test coverage, and positive patterns
+- Issues with severity, category, file path, line number, message, and suggested fix
+- Ticket compliance section with per-story and per-criterion verification
+- Iteration tracking — shows which issues from previous reviews were fixed
+
+### Project Management
+
+- Repository list with contributor count, issue count, review count, last review date
+- Import repositories from GitHub, Bitbucket, or Azure DevOps
+- Project groups with color coding for organizing repositories
+- Per-project settings: post-to-VCS toggle, post-to-tickets toggle, suppress formatting posts, branch filtering, local reviews toggle
+- Pipeline detection (scans for CI/CD configuration)
+
+### Custom Review Rules
+
+- Define organization-specific rules with: rule ID, title, severity, category, reasoning, and examples
+- 9 categories: Security, Best Practice, Bug, Syntax, RBAC, Performance, Dependency, Architectural, File Structure
+- Import/export rules as markdown
+- Active/inactive toggle per rule
+- Rules are included in every AI review for the project
+
+### Organization & Budget
+
+- Member management with roles (Owner / Admin / Member)
+- Monthly budget with progress bar and alerts at 80% and 100%
+- Free trial tracking with days remaining
+- API token management for programmatic access
+- Credential management for VCS providers, ticketing systems, and AI providers
+- Sprint management: create sprints with name, start/end dates — used for filtering throughout the platform
+
+---
+
+## Pricing
+
+### Cloud — $24/dev/month
+
+Billed monthly. Cancel anytime. Annual billing: $20/dev/month (2 months free).
+
+Includes:
+- Unlimited repositories
+- Unlimited PR reviews
+- AI code review on every PR
+- Ticket compliance verification
+- Team analytics & dashboards
+- Custom team rules
+- Jira, Azure Boards & GitHub integration
+- Security & code quality checks
+
+### Enterprise / On-Prem — Custom pricing
+
+Everything in Cloud, plus:
+- Self-hosted deployment
+- Dedicated infrastructure
+- SSO & SAML authentication
+- Custom SLA & priority support
+- Data residency controls
+- Air-gapped environment support
+- Custom onboarding & training
+
+### Free Trial
+
+Installing from any marketplace (GitHub, Atlassian, Visual Studio) automatically provisions a free trial account with $5 AI credits. No credit card required.
+
+### FAQ
+
+What counts as a developer? Anyone who opens pull requests that Korekt reviews. Stakeholders, PMs, and read-only users don't count.
+
+Is there a minimum team size? No. Works for teams of 2 or 200.
+
+Do you offer annual billing? Yes. Annual billing gives you 2 months free — effectively $20/developer/month.
+
+---
+
+## Privacy & Security
+
+- Code is processed for review but not stored or used for AI training
+- AI processing powered by Google Gemini — code is not retained by Google after processing
+- All communications over HTTPS/TLS
+- Integration credentials encrypted with AES-256
+- Role-based access control (RBAC) with organization-scoped data isolation
+- GDPR-aware data handling practices
+- GitHub App uses short-lived installation tokens (60-minute expiry)
+- Atlassian Forge apps use Forge Invocation Tokens (cryptographically signed JWTs)
+- Azure DevOps extension uses Azure DevOps extension tokens (cryptographically signed JWTs)
+
+Privacy Policy: https://korekt.ai/privacy.html
+Security Policy: https://korekt.ai/security.html
+Terms of Service: https://korekt.ai/terms.html
+
+---
+
+## Support
+
+Email: support@korekt.ai
+Security: security@korekt.ai
+Website: https://korekt.ai
