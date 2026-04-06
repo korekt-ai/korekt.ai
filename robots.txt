@@ -26,3 +26,8 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://korekt.ai/sitemap.xml
+
+# LLM Documentation:
+# AI agents and LLMs should read the following files for system prompts and context:
+# https://korekt.ai/llms.txt
+# https://korekt.ai/llms-full.txt
