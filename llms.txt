@@ -8,7 +8,7 @@ Last updated: 2026-04-06
 
 ## Product
 
-Korekt AI automatically reviews every pull request and verifies that code changes satisfy the linked ticket requirements. Each user story and acceptance criterion is individually checked with Fully Implemented / Partial / Not Met status, with evidence linking to specific files and lines.
+Korekt AI automatically reviews every pull request and verifies that code changes satisfy the linked ticket requirements. Each user story and acceptance criterion is individually checked with Fully Implemented / Partial / Not Met status, with evidence linking to specific files and lines. Language-agnostic — works with any programming language because it uses AI to analyze logic and requirements, not a static linter.
 
 The platform posts findings directly on pull requests as inline comments with suggested fixes, sets commit statuses for merge gating, and tracks issue resolution across review iterations — when a PR is updated after review, the next review shows which issues were fixed and which are still open.
 
@@ -19,6 +19,14 @@ Teams can define custom review rules with severity, category, reasoning, and exa
 The dashboard provides sprint insights with work profile analysis (Feature/Fix/Improve/Maintain/Operate mix), stale PR detection, team analytics with contributor profiles, and identity resolution across VCS providers.
 
 Powered by Google Gemini AI. Code is never stored or used for model training.
+
+## Getting Started
+
+1. Install Korekt AI from the [GitHub Marketplace](https://github.com/apps/korekt-ai), [Atlassian Marketplace](https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira) (Bitbucket + Jira), or [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=korekt-ai.korekt-ai) (Azure DevOps). A free trial with $5 AI credits is auto-provisioned — no credit card or registration needed.
+2. Connect your ticketing system (Jira Cloud or Azure Boards) for ticket compliance verification. GitHub Issues work with zero configuration.
+3. Open a pull request — Korekt automatically reviews it, posts inline comments with suggested fixes, sets a commit status, and checks whether the code satisfies the linked ticket requirements.
+
+For CLI usage: `npm install -g korekt-cli`, then `kk review main` to review your branch locally.
 
 ## Pricing
 

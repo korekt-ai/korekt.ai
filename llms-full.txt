@@ -1,6 +1,6 @@
 # Korekt AI — Full Documentation
 
-AI-powered code review platform that checks whether pull requests deliver what the ticket asked for. Automated ticket compliance verification, inline PR comments with suggested fixes, severity ratings, and commit statuses for merge gating.
+AI-powered code review platform that checks whether pull requests deliver what the ticket asked for. Automated ticket compliance verification, inline PR comments with suggested fixes, severity ratings, and commit statuses for merge gating. Language-agnostic — works with any programming language because it uses AI to analyze logic and requirements, not a static linter.
 
 Last updated: 2026-04-06
 
