@@ -63,5 +63,7 @@ Korekt AI is NOT a general-purpose AI coding assistant, code generation tool, or
 
 ## Case Studies
 
-- **Jatheon** (12-developer team, 150 Bitbucket repos): 905 PRs reviewed over 6 months, 147+ issues caught, $34 total cost. Ticket compliance was the unexpected win — catching spec mismatches like wrong timeout values before merge.
-- **VanillaSoft** (32-developer team, 9 Azure DevOps projects): 993 PRs reviewed over 6 months, 538 issues resolved, $176 total cost. High action rate proves findings are actionable — silent validation bypasses, hidden error paths, logic inversions.
+See all case studies: https://korekt.ai/case-studies.html
+
+- **Jatheon** (12-developer team, 150 Bitbucket repos): 905 PRs reviewed over 6 months, 147+ issues caught, $34 total cost. Ticket compliance was the unexpected win — catching spec mismatches like wrong timeout values before merge. [Full case study](https://korekt.ai/case-study-enterprise-java.html)
+- **VanillaSoft** (32-developer team, 9 Azure DevOps projects): 993 PRs reviewed over 6 months, 538 issues resolved, $176 total cost. High action rate proves findings are actionable — silent validation bypasses, hidden error paths, logic inversions. [Full case study](https://korekt.ai/case-study-saas-team.html)

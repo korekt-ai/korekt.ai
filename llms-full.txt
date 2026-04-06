@@ -340,7 +340,11 @@ Korekt AI is an AI code review and engineering analytics platform — not a lint
 
 ## Case Studies
 
+See all case studies: https://korekt.ai/case-studies.html
+
 ### Jatheon — 12-developer team, 150 repositories
+
+Full case study: https://korekt.ai/case-study-enterprise-java.html
 
 Jatheon's engineering team maintains a Java-based platform spanning 150 active Bitbucket repositories, shipping 150-260 pull requests per month. They connected all 150 repositories in a single onboarding session.
 
@@ -349,6 +353,8 @@ Over 6 months: 905 PRs reviewed, 147+ issues identified and resolved, $34 total 
 The unexpected win was ticket compliance — catching specification mismatches before merge. Example: a PR set a cache timeout to 30 seconds when the linked Jira ticket specified 30 minutes. The code worked fine; it just didn't match the spec.
 
 ### VanillaSoft — 32-developer team, 9 projects
+
+Full case study: https://korekt.ai/case-study-saas-team.html
 
 VanillaSoft's 32-developer engineering team works across 9 active projects in Azure DevOps, shipping 200+ pull requests per month.
 
