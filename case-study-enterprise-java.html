@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>150 Repos, $34 in Review Costs, 147 Issues Fixed - Korekt</title>
+  <meta name="description" content="How an enterprise Java team reviewed 905 PRs across 150 repositories for $34 total — and resolved 147 issues that would have shipped.">
+
+  <!-- Canonical & LLM -->
+  <link rel="canonical" href="https://korekt.ai/case-study-enterprise-java.html">
+  <link rel="alternate" type="text/plain" href="https://korekt.ai/llms.txt" title="LLM-friendly content">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://korekt.ai/case-study-enterprise-java.html">
+  <meta property="og:title" content="150 Repos, $34 in Review Costs, 147 Issues Fixed - Korekt">
+  <meta property="og:description" content="How an enterprise Java team reviewed 905 PRs across 150 repositories for $34 total — and resolved 147 issues that would have shipped.">
+  <meta property="og:image" content="https://korekt.ai/og-image.png">
+  <meta property="og:site_name" content="Korekt AI">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="150 Repos, $34 in Review Costs, 147 Issues Fixed - Korekt">
+  <meta name="twitter:description" content="How an enterprise Java team reviewed 905 PRs across 150 repositories for $34 total — and resolved 147 issues that would have shipped.">
+  <meta name="twitter:image" content="https://korekt.ai/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .container {
+      max-width: 800px;
+    }
+    nav .container {
+      max-width: 1200px;
+    }
+
+    .case-study-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      background: var(--bg-surface);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      color: var(--green-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-study-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .case-study-section h2 {
+      font-size: 1.25rem;
+      color: var(--green-400);
+      margin-bottom: 1rem;
+    }
+
+    .case-study-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    .results-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-table td {
+      padding: 0.875rem 0;
+      color: var(--text-secondary);
+    }
+
+    .results-table td:first-child {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .results-table td:last-child {
+      text-align: right;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--green-400);
+      font-size: 1.125rem;
+    }
+
+    .issue-example {
+      margin-bottom: 1.5rem;
+    }
+
+    .issue-example strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .issue-example p {
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .case-study-quote {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green-500);
+      border-radius: 0 12px 12px 0;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .case-study-quote p {
+      color: var(--text-primary);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-quote .attribution {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-style: normal;
+    }
+
+    .case-study-meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-style: italic;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .case-study-cta {
+      text-align: center;
+      padding: 3rem 0 1rem;
+    }
+
+    .case-study-cta p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="-3 -1 46 42" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#059669"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+              </linearGradient>
+            </defs>
+            <path d="M18 20 Q10 13 5 7 Q2 4 0 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M18 20 Q10 27 5 33 Q2 36 0 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 13 35 7 Q38 4 40 2" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M22 20 Q30 27 35 33 Q38 36 40 38" stroke="url(#logoGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>korekt<span class="text-green">.ai</span></span>
+      </a>
+      <a href="/" class="nav-link">&larr; Back to Home</a>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <div class="case-study-badge">Case Study</div>
+      <h1 class="case-study-title">150 Repos, $34 in Review Costs, 147 Issues Fixed</h1>
+      <p class="case-study-subtitle">How an enterprise Java team reviewed 905 pull requests across 150 repositories for $34 total — and resolved 147 issues that would have shipped.</p>
+
+      <div class="case-study-section">
+        <h2>The Team</h2>
+        <p>A 12-person engineering team managing a large Java-based platform across 150 active repositories in Bitbucket. The team ships 150&ndash;260 pull requests per month and uses JIRA for ticket tracking.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>The Challenge</h2>
+        <p>With 150 repositories and a steady stream of PRs, keeping review quality consistent was becoming harder. Senior developers were spending significant time on reviews, but some issues were inevitably slipping through &mdash; subtle bugs, security oversights, and cases where code changes didn't fully match what the ticket had specified.</p>
+        <p>The team wanted an automated safety net that would work across every repo without adding friction to their workflow.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>The Solution</h2>
+        <p>The team connected all 150 repositories to Korekt in a single onboarding. Using Bitbucket webhook integration, every pull request now gets an automated AI review before human reviewers look at it. Korekt analyzes the code, checks it against the linked JIRA ticket requirements, and flags potential issues by severity and category &mdash; giving reviewers a head start on what to focus on.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>Results</h2>
+        <p><strong>Over 5 months of production usage:</strong></p>
+        <table class="results-table">
+          <tr>
+            <td>Repositories connected</td>
+            <td>150</td>
+          </tr>
+          <tr>
+            <td>Pull requests reviewed</td>
+            <td>905</td>
+          </tr>
+          <tr>
+            <td>Potential issues identified</td>
+            <td>1,961</td>
+          </tr>
+          <tr>
+            <td>Issues resolved by the team</td>
+            <td>147+</td>
+          </tr>
+          <tr>
+            <td>Total AI review cost</td>
+            <td>$34</td>
+          </tr>
+          <tr>
+            <td>Average cost per review</td>
+            <td>$0.03</td>
+          </tr>
+        </table>
+        <p>The team now has visibility into code quality patterns across the entire codebase &mdash; not just individual PRs &mdash; and uses the data to identify areas for improvement and track progress over time.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h2>Examples of Issues Caught Early</h2>
+        <p>Korekt catches the kind of subtle issues that are easy to miss in manual review:</p>
+
+        <div class="issue-example">
+          <strong>Ticket requirement mismatches</strong>
+          <p>A cache timeout was set to 30 seconds when the JIRA ticket explicitly specified 30 minutes. The PR had been approved by a human reviewer &mdash; Korekt flagged the discrepancy before it shipped.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Database migration risks</strong>
+          <p>A Liquibase changeset ID was modified in an existing file. If already deployed, this would have caused Liquibase to re-run it as a new changeset &mdash; a potentially destructive operation on production data.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Latent runtime issues</strong>
+          <p>A builder method returned <code>null</code> instead of <code>this</code>, meaning any fluent chain using that builder would fail at runtime &mdash; a problem that wouldn't surface until the specific code path was hit.</p>
+        </div>
+
+        <div class="issue-example">
+          <strong>Silent logic errors</strong>
+          <p>A cache lookup was hashing queries with a timestamp, making every key unique &mdash; the cache would never return a hit, silently defeating its entire purpose.</p>
+        </div>
+      </div>
+
+      <div class="case-study-section">
+        <h2>The Ticket Compliance Difference</h2>
+        <p>What the team found most valuable was Korekt's ability to check whether the code actually implements what the ticket specified. By pulling in context from JIRA, Korekt flags cases where a PR technically works but doesn't meet the requirements &mdash; a gap that traditional code review tools don't address.</p>
+      </div>
+
+      <div class="case-study-quote">
+        <p>"We connected 150 repositories and every PR gets reviewed automatically. The ticket compliance check is something we haven't seen anywhere else &mdash; it catches cases where the code technically works but doesn't match what was specified."</p>
+        <div class="attribution">&mdash; CEO, Enterprise Software Company</div>
+      </div>
+
+      <p class="case-study-meta">This team uses Korekt with Bitbucket and JIRA integration.</p>
+
+      <div class="case-study-cta">
+        <p>Want to see how Korekt works for your team?</p>
+        <a href="demo.html" class="btn btn-primary">
+          Book a demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-text">
+        &copy; 2026 Korekt. Keep your kode korekt.
+      </div>
+      <div class="footer-links">
+        <a href="docs.html">Docs</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="security.html">Security</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:hello@korekt.ai">Contact</a>
+        <a href="llms.txt">AI Agents</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
