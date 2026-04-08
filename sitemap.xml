@@ -2,77 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://korekt.ai/</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/demo.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/demo</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/pricing.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/pricing</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/case-studies.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/case-studies</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/case-study-enterprise-java.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/case-study-enterprise-java</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/case-study-saas-team.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/case-study-saas-team</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs/github.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs/github</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs/bitbucket.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs/bitbucket</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs/jira.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs/jira</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs/azure-devops.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs/azure-devops</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/docs/cli.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/docs/cli</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/privacy.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/privacy</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/security.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/security</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://korekt.ai/terms.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <loc>https://korekt.ai/terms</loc>
+    <lastmod>2026-04-08</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

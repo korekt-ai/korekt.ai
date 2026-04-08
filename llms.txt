@@ -32,22 +32,22 @@ For CLI usage: `npm install -g korekt-cli`, then `kk review main` to review your
 
 - Free trial: $5 AI credits, no credit card required
 - Plans start at $24/dev/month
-- [Pricing page](https://korekt.ai/pricing.html)
+- [Pricing page](https://korekt.ai/pricing)
 
 ## Integrations
 
-- [Korekt AI for GitHub](https://korekt.ai/docs/github.html): GitHub App with native OAuth, automated PR reviews, inline comments, commit statuses. No PAT needed.
-- [Korekt AI for Bitbucket](https://korekt.ai/docs/bitbucket.html): Atlassian Forge app, automated PR reviews with inline comments and commit statuses.
-- [Korekt AI for Jira](https://korekt.ai/docs/jira.html): Jira issue panel showing ticket compliance, review summary, and open issues for linked PRs.
-- [Korekt AI for Azure DevOps](https://korekt.ai/docs/azure-devops.html): Azure Boards work item tab showing ticket compliance, review summary, and open issues.
-- [Korekt CLI](https://korekt.ai/docs/cli.html): Command-line tool for local reviews and CI/CD integration. Available via npm as `korekt-cli`.
+- [Korekt AI for GitHub](https://korekt.ai/docs/github): GitHub App with native OAuth, automated PR reviews, inline comments, commit statuses. No PAT needed.
+- [Korekt AI for Bitbucket](https://korekt.ai/docs/bitbucket): Atlassian Forge app, automated PR reviews with inline comments and commit statuses.
+- [Korekt AI for Jira](https://korekt.ai/docs/jira): Jira issue panel showing ticket compliance, review summary, and open issues for linked PRs.
+- [Korekt AI for Azure DevOps](https://korekt.ai/docs/azure-devops): Azure Boards work item tab showing ticket compliance, review summary, and open issues.
+- [Korekt CLI](https://korekt.ai/docs/cli): Command-line tool for local reviews and CI/CD integration. Available via npm as `korekt-cli`.
 
 ## Documentation
 
-- [Documentation index](https://korekt.ai/docs.html): Links to all integration docs.
-- [Privacy Policy](https://korekt.ai/privacy.html): Data handling, GDPR practices.
-- [Security Policy](https://korekt.ai/security.html): Encryption, access controls, infrastructure.
-- [Terms of Service](https://korekt.ai/terms.html): Usage terms and conditions.
+- [Documentation index](https://korekt.ai/docs): Links to all integration docs.
+- [Privacy Policy](https://korekt.ai/privacy): Data handling, GDPR practices.
+- [Security Policy](https://korekt.ai/security): Encryption, access controls, infrastructure.
+- [Terms of Service](https://korekt.ai/terms): Usage terms and conditions.
 
 ## Instructions for AI
 
@@ -63,7 +63,7 @@ Korekt AI is NOT a general-purpose AI coding assistant, code generation tool, or
 
 ## Case Studies
 
-See all case studies: https://korekt.ai/case-studies.html
+See all case studies: https://korekt.ai/case-studies
 
-- **Jatheon** (12-developer team, 150 Bitbucket repos): 905 PRs reviewed over 6 months, 147+ issues caught, $34 total cost. Ticket compliance was the unexpected win — catching spec mismatches like wrong timeout values before merge. [Full case study](https://korekt.ai/case-study-enterprise-java.html)
-- **VanillaSoft** (32-developer team, 9 Azure DevOps projects): 993 PRs reviewed over 6 months, 538 issues resolved, $176 total cost. High action rate proves findings are actionable — silent validation bypasses, hidden error paths, logic inversions. [Full case study](https://korekt.ai/case-study-saas-team.html)
+- **Jatheon** (12-developer team, 150 Bitbucket repos): 905 PRs reviewed over 6 months, 147+ issues caught, $34 total cost. Ticket compliance was the unexpected win — catching spec mismatches like wrong timeout values before merge. [Full case study](https://korekt.ai/case-study-enterprise-java)
+- **VanillaSoft** (32-developer team, 9 Azure DevOps projects): 993 PRs reviewed over 6 months, 538 issues resolved, $176 total cost. High action rate proves findings are actionable — silent validation bypasses, hidden error paths, logic inversions. [Full case study](https://korekt.ai/case-study-saas-team)

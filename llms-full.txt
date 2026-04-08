@@ -340,11 +340,11 @@ Korekt AI is an AI code review and engineering analytics platform — not a lint
 
 ## Case Studies
 
-See all case studies: https://korekt.ai/case-studies.html
+See all case studies: https://korekt.ai/case-studies
 
 ### Jatheon — 12-developer team, 150 repositories
 
-Full case study: https://korekt.ai/case-study-enterprise-java.html
+Full case study: https://korekt.ai/case-study-enterprise-java
 
 Jatheon's engineering team maintains a Java-based platform spanning 150 active Bitbucket repositories, shipping 150-260 pull requests per month. They connected all 150 repositories in a single onboarding session.
 
@@ -354,7 +354,7 @@ The unexpected win was ticket compliance — catching specification mismatches b
 
 ### VanillaSoft — 32-developer team, 9 projects
 
-Full case study: https://korekt.ai/case-study-saas-team.html
+Full case study: https://korekt.ai/case-study-saas-team
 
 VanillaSoft's 32-developer engineering team works across 9 active projects in Azure DevOps, shipping 200+ pull requests per month.
 
@@ -376,9 +376,9 @@ The key metric: 538 issues resolved. The team isn't just seeing findings — the
 - Atlassian Forge apps use Forge Invocation Tokens (cryptographically signed JWTs)
 - Azure DevOps extension uses Azure DevOps extension tokens (cryptographically signed JWTs)
 
-Privacy Policy: https://korekt.ai/privacy.html
-Security Policy: https://korekt.ai/security.html
-Terms of Service: https://korekt.ai/terms.html
+Privacy Policy: https://korekt.ai/privacy
+Security Policy: https://korekt.ai/security
+Terms of Service: https://korekt.ai/terms
 
 ---
 
