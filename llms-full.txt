@@ -50,7 +50,7 @@ Each user story and acceptance criterion is individually verified, with evidence
 
 ### Installation
 
-1. Install Korekt AI from https://github.com/apps/korekt-ai
+1. Install Korekt AI from https://github.com/marketplace/korekt-ai
 2. Select the repositories you want to review
 3. A free trial account with a $5 review budget is automatically created for your organization
 
@@ -80,7 +80,7 @@ The app catches bugs, security vulnerabilities, performance issues, and best pra
 
 ### Installation
 
-1. Install Korekt AI for Bitbucket from the Atlassian Marketplace
+1. Install [Korekt AI for Bitbucket](https://marketplace.atlassian.com/apps/3664697542/korekt-ai-for-bitbucket) from the Atlassian Marketplace
 2. Select the Bitbucket workspace where you want to enable automated reviews
 3. A free trial account with a $5 review budget is automatically created for your workspace
 
@@ -112,7 +112,7 @@ This app displays review results — it does not perform code reviews itself. Re
 
 ### Installation
 
-1. Install Korekt AI for Jira from the Atlassian Marketplace
+1. Install [Korekt AI for Jira](https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira) from the Atlassian Marketplace
 2. Select the Jira site where you want to enable review insights
 3. A free trial account with a $5 review budget is automatically created for your organization
 

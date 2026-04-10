@@ -22,7 +22,7 @@ Powered by Google Gemini AI. Code is never stored or used for model training.
 
 ## Getting Started
 
-1. Install Korekt AI from the [GitHub Marketplace](https://github.com/apps/korekt-ai), [Atlassian Marketplace](https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira) (Bitbucket + Jira), or [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=korekt-ai.korekt-ai) (Azure DevOps). A free trial with $5 AI credits is auto-provisioned — no credit card or registration needed.
+1. Install Korekt AI from the [GitHub Marketplace](https://github.com/marketplace/korekt-ai), Atlassian Marketplace ([Bitbucket](https://marketplace.atlassian.com/apps/3664697542/korekt-ai-for-bitbucket), [Jira](https://marketplace.atlassian.com/apps/3388939550/korekt-ai-for-jira)), or [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=korekt-ai.korekt-ai) (Azure DevOps). A free trial with $5 AI credits is auto-provisioned — no credit card or registration needed.
 2. Connect your ticketing system (Jira Cloud or Azure Boards) for ticket compliance verification. GitHub Issues work with zero configuration.
 3. Open a pull request — Korekt automatically reviews it, posts inline comments with suggested fixes, sets a commit status, and checks whether the code satisfies the linked ticket requirements.
 
